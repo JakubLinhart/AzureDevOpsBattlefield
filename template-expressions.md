@@ -59,28 +59,30 @@ produces this output:
 Consider this [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/fc5fe379579f4d57d2480141c362f6e8dfdf487b/pipelines/template-expressions.yml#L10-L15):
 
 ```yaml
-variables:
-  - name: var_using_variable_not_defined_yet
-    value: 'this comes from one variable and: "${{ variables.var_for_other_variable }}"'
-  - name: var_for_other_variable
-    value: 'this comes from a referenced variable'
-  - name: var_using_template_expression
-    value: 'this comes from one variable and: "${{ variables.var_for_other_variable }}"'
-
-steps:
-  - pwsh: |
-      Write-Output 'Variable value containing template expression. The referenced variable is put into "".'
-      Write-Output '    variables.var_using_template_expression: ''${{ variables.var_using_template_expression }}'''
+  variables:
+    - name: var_using_variable_not_defined_yet
+      value: 'this comes from one variable and: "${{ variables.var_for_other_variable }}"'
+    - name: var_for_other_variable
+      value: 'this comes from a referenced variable'
+    - name: var_using_template_expression
+      value: 'this comes from one variable and: "${{ variables.var_for_other_variable }}"'
   
-      Write-Output ''
-      Write-Output 'Variable value containing template expression. The referenced variable is put into "",'
-      Write-Output 'but is defined after using it, so it is evaluated to an empty string.'
-      Write-Output '    variables.var_using_variable_not_defined_yet: ''${{ variables.var_using_variable_not_defined_yet }}'''
+  steps:
+    - pwsh: |
+        Write-Output 'Variable value containing template expression. The referenced variable is put into "".'
+        Write-Output '    variables.var_using_template_expression: ''${{ variables.var_using_template_expression }}'''
+    
+        Write-Output ''
+        Write-Output 'Variable value containing template expression. The referenced variable is put into "",'
+        Write-Output 'but is defined after using it, so it is evaluated to an empty string.'
+        Write-Output '    variables.var_using_variable_not_defined_yet: ''${{ variables.var_using_variable_not_defined_yet }}'''
 ```
 
 The variable `var_using_variable_not_defined_yet` is defined with a reference to another variable `var_for_other_variable`, which is defined after `var_using_variable_not_defined_yet`. As a result, `var_using_variable_not_defined_yet` is evaluated as an empty string. On the other hand, `var_using_template_expression` correctly utilizes `var_for_other_variable`, which is already known at that point and thus evaluated correctly.
 
 So the output for this example looks like this:
+
+[![variable definition order](images/template-expressions-definition-order-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=266&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=12)
 
 ## Nested evaluation is NOT supported
 
