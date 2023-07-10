@@ -27,9 +27,8 @@ TBD
 ## Template expressions (aka compile-time expressions)
 
 - [Usable on the left side of a key.](template-expressions.md#usable-on-the-left-side-of-a-key)
-- [UI-defined variables are unavailable in template expressions.](template-expressions.md#ui-defined-variables-are-unavailable-in-template-expressions)
 - [An undefined variable is evaluated as an empty string.](template-expressions.md#an-undefined-variable-is-evaluated-as-an-empty-string)
-- [Can contain `if`.](template-expressions.md#can-contain-if)
+- [UI-defined variables are unavailable in template expressions.](template-expressions.md#ui-defined-variables-are-unavailable-in-template-expressions)
 - [The order of variable definitions is important.](template-expressions.md#the-order-of-variable-definitions-is-important)
 - [Nested evaluation is NOT supported.](template-expressions.md#nested-evaluation-is-not-supported)
 
