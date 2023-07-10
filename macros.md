@@ -80,7 +80,7 @@ then the [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build
 
 ![retryCountOnTaskFailure, timeoutInMinutes](images/macros-invalid-properties2-error.png)
 
-If you try to use a macro in a condition, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/macros-invalid-properties3.yml):
+If you try to use a macro in a `condition``, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/macros-invalid-properties3.yml):
 
 ```yaml
   variables:
@@ -96,6 +96,17 @@ If you try to use a macro in a condition, for [example](https://github.com/Jakub
 then the pipeline starts but the initialization job fails with an error:
 
 [![condition](images/macros-invalid-properties3-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=246&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=e0f977f9-ef87-4bf0-b7e2-aeee2c074101&l=14)
+
+If you try to use a macro in a `displayName` then there is no error but the macro is not evaluated. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9c194652fa23fd63230e65d6765e69a91687fc91/pipelines/macros.yml#L80):
+
+```yaml
+  - pwsh: Write-Output 'some step'
+    displayName: '(var_defined_at_pipeline_level) $(var_defined_at_pipeline_level)'
+```
+
+is not expanded at all, so you get a task with this name:
+
+[![macro in displayName](images/macros-displayName-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=247&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=f2293c27-2d42-546b-fdc3-f93463ef70fa)
 
 ## Macros can utilize UI-defined variables
 
