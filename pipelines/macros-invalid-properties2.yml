@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+      - AzureDevOpsBattleground/macros-invalid-properties2.yml
+
+variables:
+  - name: var_condition
+    value: always()
+  - name: var_some_number
+    value: 3
+
+steps:
+  - pwsh: Write-Output 'some step'
+    displayName: 'A task with macros in properties'
+    condition: $(var_condition)
+    retryCountOnTaskFailure: $(var_some_number)
+    timeoutInMinutes: $(var_some_number)
