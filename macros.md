@@ -176,7 +176,7 @@ and the output shows that only inner macro is evaluated:
 
 Runtime expressions are evaluated at the job level, which means that they are evaluated before macros. Consequently, macros can utilize variables defined by runtime expressions. 
 
-For [example](TBD)
+For [example](TBD):
 
 ```yaml
 variables:
@@ -187,15 +187,20 @@ variables:
 
 - steps:
     - pwsh: |
+        Write-Output 'If you define a variable with this value: $[eq(variables.variable_name_fragment, ''something else'')],'
+        Write-Output 'then you get ''False'' because variable_name_fragment is set to ''with_value''. You can use the variable in a macro:'
         Write-Output '    (var_runtime_expression): $(var_runtime_expression)'
 ```
+
+you will get this output:
+
+![macro uses variable defined by runtime expression](images/macros-runtime-expression-output.png)
 
 For more information see [Runtime expressions](/#runtime-expressions) chapter.
 
 ## Undefined variables preserve macro syntax in expansions
 
-`$(undefined_variable)` is expanded to `$(undefined_variable)` when `undefined_variable` is not defined.
-[Example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L68):
+`$(undefined_variable)` is expanded to `$(undefined_variable)` when `undefined_variable` is not defined. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L68):
 
 ```yaml
   Write-Output '(undefined_variable) ''$(undefined_variable)'''
