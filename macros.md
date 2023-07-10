@@ -176,7 +176,7 @@ and the output shows that only inner macro is evaluated:
 
 Runtime expressions are evaluated at the job level, which means that they are evaluated before macros. Consequently, macros can utilize variables defined by runtime expressions. 
 
-For [example](TBD):
+For [example]([TBD](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/c3d2ef8d24083f27c517e8ee288cd5bd176df69c/pipelines/macros.yml#L77)):
 
 ```yaml
 variables:
@@ -194,7 +194,7 @@ variables:
 
 you will get this output:
 
-![macro uses variable defined by runtime expression](images/macros-runtime-expression-output.png)
+[![macro uses variable defined by runtime expression](images/macros-runtime-expression-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=259&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=bd5b3379-fc2b-58be-675b-6db955a3e723&l=14)
 
 For more information see [Runtime expressions](/#runtime-expressions) chapter.
 
