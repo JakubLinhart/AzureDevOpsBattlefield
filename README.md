@@ -10,7 +10,7 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 > Macro syntax is designed to interpolate variable values into task inputs and into other variables.
 
-  ### Macros can be used in the majority of task inputs, such as the "script".
+#### Macros can be used in the majority of task inputs, such as the "script".
 
 <details>
   <summary>
@@ -32,7 +32,7 @@ It is important to note that this repository does not claim to provide exhaustiv
   ```
 </details>
 
-### Macros can also be used in variable value definitions.
+#### Macros can also be used in variable value definitions.
 
 <details>
   <summary>
@@ -51,7 +51,7 @@ It is important to note that this repository does not claim to provide exhaustiv
   [![Example output](images/macros-variable-value-definition.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=f064c65f-5d7b-5dd9-a2c0-b27c2b3dbefa&l=12)
 </details>
 
-### Macros can be used in the "env" section.
+#### Macros can be used in the "env" section.
 
 <details>
   <summary>
@@ -71,7 +71,7 @@ It is important to note that this repository does not claim to provide exhaustiv
   [![Example output](images/macros-env.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=67bb029a-943e-5196-8d89-e7392cea21c1&l=12)
 </details>
 
-### In general, macros cannot be used at the task property level
+#### In general, macros cannot be used at the task property level
 
 <details>
   <summary>
@@ -132,7 +132,7 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 </details>
 
-### Macros can utilize UI-defined variables.
+#### Macros can utilize UI-defined variables.
 
 <details>
   <summary>
@@ -140,7 +140,7 @@ It is important to note that this repository does not claim to provide exhaustiv
   </summary>
 </details>
 
-### Macros are evaluated lazily, variable definition order is not relevant
+#### Macros are evaluated lazily, variable definition order is not relevant
 
 <details>
   <summary>
@@ -151,7 +151,7 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 </details>
 
-### Nested expansion is supported
+#### Nested expansion is supported
 
 <details>
   <summary>
@@ -159,7 +159,7 @@ It is important to note that this repository does not claim to provide exhaustiv
   </summary>
 </details>
 
-### Variables referenced by macros can be defined using runtime expressions
+#### Variables referenced by macros can be defined using runtime expressions
 
 <details>
   <summary>
@@ -167,7 +167,7 @@ It is important to note that this repository does not claim to provide exhaustiv
   </summary>
 </details>
 
-### Undefined variables preserve macro syntax in expansions.
+#### Undefined variables preserve macro syntax in expansions.
 
 <details>
   <summary>
