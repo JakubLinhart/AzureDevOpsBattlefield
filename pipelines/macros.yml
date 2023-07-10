@@ -72,7 +72,7 @@ stages:
             displayName: Macro in variable value
 
           - pwsh: |
-              Write-Output 'If you define a variable with this value: $[eq(variables.variable_name_fragment, 'something else')],'
+              Write-Output 'If you define a variable with this value: $[eq(variables.variable_name_fragment, ''something else'')],'
               Write-Output 'then you get ''False'' because variable_name_fragment is set to ''with_value''. You can use the variable in a macro:'
               Write-Output '    (var_runtime_expression): $(var_runtime_expression)'
             displayName: Macro using variables defined by a runtime expression
