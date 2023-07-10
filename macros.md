@@ -80,7 +80,7 @@ then the [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build
 
 ![retryCountOnTaskFailure, timeoutInMinutes](images/macros-invalid-properties2-error.png)
 
-If you try to use a macro in a `condition``, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/macros-invalid-properties3.yml):
+If you try to use a macro in a `condition` task property, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/macros-invalid-properties3.yml):
 
 ```yaml
   variables:
@@ -97,7 +97,7 @@ then the pipeline starts but the initialization job fails with an error:
 
 [![condition](images/macros-invalid-properties3-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=246&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=e0f977f9-ef87-4bf0-b7e2-aeee2c074101&l=14)
 
-If you try to use a macro in a `displayName` then there is no error but the macro is not evaluated. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9c194652fa23fd63230e65d6765e69a91687fc91/pipelines/macros.yml#L80):
+If you try to use a macro in a `displayName` task property then there is no error but the macro is not evaluated. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9c194652fa23fd63230e65d6765e69a91687fc91/pipelines/macros.yml#L80):
 
 ```yaml
   - pwsh: Write-Output 'some step'
@@ -152,9 +152,25 @@ stages:
 
 [![lazy evaluation](images/macros-lazy-evaluation-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=247&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=f064c65f-5d7b-5dd9-a2c0-b27c2b3dbefa&l=16)
 
-## Nested expansion is supported
+## Nested evaluation is NOT supported
 
-TBD
+Macros cannot contain sub-macros, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/b716cb4d3302f7bfbf095bc7f7c26b0d1024df25/pipelines/macros.yml#L73):
+
+```yaml
+  variables:
+    - name: variable_name_fragment
+        value: 'with_value'
+    - name: var_with_value_for_another_value
+        value: 'this comes from a macro'
+
+  - steps:
+    - pwsh: |
+        Write-Output '(var_(variable_name_fragment)_for_another_value) ''$(var_$(variable_name_fragment)_for_another_value)'''
+```
+
+and the output shows that only inner macro is evaluated:
+
+[![nested evaluation](images/macros-nested-evaluation.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=247&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=bd5b3379-fc2b-58be-675b-6db955a3e723&l=12)
 
 ## Variables referenced by macros can be defined using runtime expressions
 
