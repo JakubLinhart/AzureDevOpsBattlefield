@@ -10,15 +10,18 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 > Macro syntax is designed to interpolate variable values into task inputs and into other variables.
 
+  ### Macros can be used in the majority of task inputs, such as the "script".
+
 <details>
   <summary>
-    Macros can be used in the majority of task inputs, such as the "script".
+    details
   </summary>
-  
+
   For `PowerShell@2` task it is possible to use for
   [targetType](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L124), [workingDirectory](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L125C15-L125C31),
   and [script](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L126) inputs (see [example output](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=3fa529ca-c925-5304-b42f-2bbd21f9750e)), 
   but in general, it should be possible for any input of any task.
+
   ```yaml
     - task: PowerShell@2
       displayName: 'A task with macros in inputs'
@@ -27,12 +30,13 @@ It is important to note that this repository does not claim to provide exhaustiv
         workingDirectory: $(var_workingDirectory)
         script: $(var_script)
   ```
-
 </details>
+
+### Macros can also be used in variable value definitions.
 
 <details>
   <summary>
-    Macros can also be used in variable value definitions.
+    details
   </summary>
 
   This is [possible](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L20):
@@ -47,9 +51,11 @@ It is important to note that this repository does not claim to provide exhaustiv
   [![Example output](images/macros-variable-value-definition.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=f064c65f-5d7b-5dd9-a2c0-b27c2b3dbefa&l=12)
 </details>
 
+### Macros can be used in the "env" section.
+
 <details>
   <summary>
-    Macros can be used in the "env" section.
+    details
   </summary>
 
   `env` section is at the properties level, but it is the same exception as `inputs`. 
@@ -65,9 +71,11 @@ It is important to note that this repository does not claim to provide exhaustiv
   [![Example output](images/macros-env.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=67bb029a-943e-5196-8d89-e7392cea21c1&l=12)
 </details>
 
+### In general, macros cannot be used at the task property level
+
 <details>
   <summary>
-    In general, macros cannot be used at the task property level.
+    details
   </summary>
 
   If you try to use macros in boolean properties, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/0d6ece87a31d8ddb1c5dbc4600ada07e661d31d8/pipelines/macros-invalid-properties1.yml):
@@ -124,33 +132,46 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 </details>
 
-<details>
-  <summary>
-    Macros can utilize UI-defined variables.
-  </summary>
-</details>
+### Macros can utilize UI-defined variables.
 
 <details>
   <summary>
-    Variable definitions can contain macros with variables that are not defined yet. For example, you can use a job-level variable when defining a stage-level variable, as long as both variables exist during the final evaluation.
+    details
   </summary>
 </details>
 
-<details>
-  <summary>
-    Nested expansion is supported.
-  </summary>
-</details>
+### Macros are evaluated lazily, variable definition order is not relevant
 
 <details>
   <summary>
-    Variables referenced by macros can be defined using runtime expressions.
+    details
   </summary>
+
+  Variable definitions can contain macros with variables that are not defined yet. For example, you can use a job-level variable when defining a stage-level variable, as long as both variables exist during the final evaluation.
+
 </details>
+
+### Nested expansion is supported
 
 <details>
   <summary>
-    If a variable is not defined, the expansion of the macro will retain the original macro syntax.
+    details
+  </summary>
+</details>
+
+### Variables referenced by macros can be defined using runtime expressions
+
+<details>
+  <summary>
+    details
+  </summary>
+</details>
+
+### Undefined variables preserve macro syntax in expansions.
+
+<details>
+  <summary>
+    details
   </summary>
 
   `$(undefined_variable)` is expanded to `$(undefined_variable)` when `undefined_variable` is not defined.
