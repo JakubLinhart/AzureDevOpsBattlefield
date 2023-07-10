@@ -110,13 +110,13 @@ stages:
               Write-Output "var_with_value_assigned_from_setvariable: $(var_with_value_assigned_from_setvariable)"
             displayName: Check variable value
 
-          # - pwsh: Write-Output 'some step'
-          #   displayName: 'A task with macros in properties'
-          #   condition: $(var_condition) # doesn't pass job start validation, because '$(var_condition)' is not a valid condition
-          #   enabled: '$(var_some_boolean)' # doesn't pass pipeline start validation, because true/false is expected on compile time
-          #   retryCountOnTaskFailure: $(var_some_number) # Expected an integer value.
-          #   timeoutInMinutes: $(var_some_number) # Expected an integer value.
-          #   continueOnError: $(var_some_boolean) #  Unexpected value
+          - pwsh: Write-Output 'some step'
+            displayName: 'A task with macros in properties'
+            condition: $(var_condition) # doesn't pass job start validation, because '$(var_condition)' is not a valid condition
+            enabled: '$(var_some_boolean)' # doesn't pass pipeline start validation, because true/false is expected on compile time
+            retryCountOnTaskFailure: $(var_some_number) # Expected an integer value.
+            timeoutInMinutes: $(var_some_number) # Expected an integer value.
+            continueOnError: $(var_some_boolean) #  Unexpected value
 
           - task: PowerShell@2
             displayName: 'A task with macros in inputs'
