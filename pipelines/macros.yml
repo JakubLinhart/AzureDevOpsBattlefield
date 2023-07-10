@@ -1,0 +1,169 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+      - AzureDevOpsBattleground/macros.yml
+
+variables:
+  - name: var_defined_at_pipeline_level
+    value: 'defined at pipeline level'
+  - name: var_my_environment_variable
+    value: 'this comes from a macro'
+  - name: var_with_macro_with_undefined_variable_in_value_at_pipeline_level
+    value: '$(var_with_value_for_another_value)'
+  - name: var_with_value_for_another_value
+    value: 'this comes from a macro'
+  - name: var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level
+    value: 'this part was defined at pipliene level, $(var_with_value_for_another_value_on_job_level)'
+  - name: var_with_macro_in_value_at_pipeline_level
+    value: '$(var_with_value_for_another_value)'
+  - name: variable_name_fragment
+    value: 'with_value'
+
+  - name: var_some_boolean
+    value: true
+  - name: var_condition
+    value: always()
+  - name: var_some_number
+    value: 3
+
+  - name: var_script
+    value: |
+      pwd
+  - name: var_targetType
+    value: inline
+  - name: var_workingDirectory
+    value: '/'
+
+stages:
+  - stage: stage1
+    variables:
+      - name: var_defined_at_stage_level
+        value: 'defined at stage level'
+      - name: var_with_macro_in_value_at_stage_level
+        value: '$(var_with_value_for_another_value)'
+    jobs:
+      - job: job1
+        displayName: Job with steps validating macro usage
+        variables:
+          - name: var_defined_at_job_level
+            value: 'defined at job level'
+          - name: var_with_macro_in_value_at_job_level
+            value: '$(var_with_value_for_another_value)'
+          - name: var_with_value_for_another_value_on_job_level
+            value: 'this part was defined at job level'
+          - name: var_with_value_assigned_from_setvariable
+            value: 'This comes from setvariable: $(setvariablevar)'
+
+        steps:
+          - checkout: none
+
+          - pwsh: |
+              Write-Output '(var_defined_at_ui_level) ''$(var_defined_at_ui_level)'''
+              Write-Output '(var_defined_at_pipeline_level) ''$(var_defined_at_pipeline_level)'''
+              Write-Output '(var_defined_at_stage_level) ''$(var_defined_at_stage_level)'''
+              Write-Output '(var_defined_at_job_level) ''$(var_defined_at_job_level)'''
+              Write-Output '(undefined_variable) ''$(undefined_variable)'''
+            displayName: Macro in script
+
+          - pwsh: |
+              Write-Output '(var_with_macro_in_value_at_pipeline_level) ''$(var_with_macro_in_value_at_pipeline_level)'''
+              Write-Output '(var_with_macro_with_undefined_variable_in_value_at_pipeline_level) ''$(var_with_macro_with_undefined_variable_in_value_at_pipeline_level)'''
+              Write-Output '(var_with_macro_in_value_at_stage_level) ''$(var_with_macro_in_value_at_stage_level)'''
+              Write-Output '(var_with_macro_in_value_at_job_level) ''$(var_with_macro_in_value_at_job_level)'''
+              Write-Output '(var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level) ''$(var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level)'''
+            displayName: Macro in variable value
+
+          - pwsh: |
+              Write-Output '(var_(variable_name_fragment)_for_another_value) ''$(var_$(variable_name_fragment)_for_another_value)'''
+            displayName: Nested macros
+
+          - pwsh: Write-Output 'some step'
+            displayName: '(var_defined_at_ui_level) $(var_defined_at_ui_level)'
+
+          - pwsh: Write-Output 'some step'
+            displayName: '(var_defined_at_pipeline_level) $(var_defined_at_pipeline_level)'
+
+          - pwsh: Write-Output 'some step'
+            displayName: '(var_defined_at_stage_level) $(var_defined_at_stage_level)'
+
+          - pwsh: Write-Output 'some step'
+            displayName: '(var_defined_at_job_level) $(var_defined_at_job_level)'
+
+          - pwsh: Write-Output 'some step'
+            displayName: 'A task with macros in properties'
+
+          - pwsh: |
+              Write-Output "my_environment_variable: '$env:my_environment_variable'"
+            displayName: 'A task with macro in env'
+            env:
+              my_environment_variable: $(var_my_environment_variable)
+
+          - pwsh: |
+              Write-Output "##vso[task.setvariable variable=setvariablevar]variable value set from a script"
+            displayName: Set variable from script
+
+          - pwsh: |
+              Write-Output "setvariablevar: $(setvariablevar)"
+              Write-Output "var_with_value_assigned_from_setvariable: $(var_with_value_assigned_from_setvariable)"
+            displayName: Check variable value
+
+          # - pwsh: Write-Output 'some step'
+          #   displayName: 'A task with macros in properties'
+          #   condition: $(var_condition) # doesn't pass job start validation, because '$(var_condition)' is not a valid condition
+          #   enabled: '$(var_some_boolean)' # doesn't pass pipeline start validation, because true/false is expected on compile time
+          #   retryCountOnTaskFailure: $(var_some_number) # Expected an integer value.
+          #   timeoutInMinutes: $(var_some_number) # Expected an integer value.
+          #   continueOnError: $(var_some_boolean) #  Unexpected value
+
+          - task: PowerShell@2
+            displayName: 'A task with macros in inputs'
+            inputs:
+              targetType: $(var_targetType)
+              workingDirectory: $(var_workingDirectory)
+              script: $(var_script)
+
+      - job: job2
+        displayName: '(var_defined_at_ui_level) $(var_defined_at_ui_level)'
+        dependsOn: 'job1'
+        steps:
+          - checkout: none
+
+      - job: job3
+        displayName: '(var_defined_at_pipeline_level) $(var_defined_at_pipeline_level)'
+        dependsOn: 'job2'
+        steps:
+          - checkout: none
+
+      - job: job4
+        displayName: '(var_defined_at_stage_level) $(var_defined_at_stage_level)'
+        dependsOn: 'job3'
+        steps:
+          - checkout: none
+
+      - job: job5
+        displayName: '(var_defined_at_job_level) $(var_defined_at_job_level)'
+        dependsOn: 'job4'
+        variables:
+          - name: var_defined_at_job_level
+            value: 'defined at job level'
+        steps: 
+          - checkout: none
+
+  - stage: stage2
+    displayName: '(var_defined_at_pipeline_level) $(var_defined_at_pipeline_level)'
+    dependsOn: [stage1]
+    jobs:
+      - job: job1
+        steps:
+          - checkout: none
+
+  - stage: stage3
+    displayName: '(var_defined_at_ui_level) $(var_defined_at_ui_level)'
+    dependsOn: [stage2]
+    jobs:
+      - job: job1
+        steps:
+          - checkout: none
