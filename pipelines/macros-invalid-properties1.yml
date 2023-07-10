@@ -6,6 +6,10 @@ trigger:
     include:
       - AzureDevOpsBattleground/macros-invalid-properties1.yml
 
+variables:
+  - name: var_some_boolean
+    value: true
+
 steps:
   - pwsh: Write-Output 'some step'
     displayName: 'A task with macros in properties'
