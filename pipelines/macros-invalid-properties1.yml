@@ -13,5 +13,5 @@ variables:
 steps:
   - pwsh: Write-Output 'some step'
     displayName: 'A task with macros in properties'
-    enabled: '$(var_some_boolean)' # doesn't pass pipeline start validation, because true/false is expected on compile time
-    continueOnError: $(var_some_boolean) #  Unexpected value
+    enabled: $(var_some_boolean)
+    continueOnError: $(var_some_boolean)
