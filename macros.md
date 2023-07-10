@@ -194,7 +194,7 @@ variables:
 
 you will get this output:
 
-[![macro uses variable defined by runtime expression](images/macros-runtime-expression-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=259&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=bd5b3379-fc2b-58be-675b-6db955a3e723&l=14)
+[![a macro uses variable defined by runtime expression](images/macros-runtime-expression-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=259&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=bd5b3379-fc2b-58be-675b-6db955a3e723&l=14)
 
 For more information see [Runtime expressions](/#runtime-expressions) chapter.
 

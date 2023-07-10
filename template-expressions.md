@@ -31,7 +31,7 @@ For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9db841
 
 and the output is:
 
-[![undefined variable ouptut](images/template-expressions-undefined-variable-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=262&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=22)
+[![undefined variable output](images/template-expressions-undefined-variable-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=262&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=22)
 
 ## UI-defined variables are unavailable in template expressions
 
@@ -45,12 +45,12 @@ then for [example]([TBD](https://github.com/JakubLinhart/AzureDevOpsBattlefield/
 
 ```yaml
   - pwsh: |
-    Write-Output ''
-    Write-Output 'Template expressions are evaluated before UI variables are defined, so it is not possible to use them in template expressions.'
-    Write-Output '    variables.var_defined_at_ui_level: ${{ variables.var_defined_at_ui_level }}'
+      Write-Output ''
+      Write-Output 'Template expressions are evaluated before UI variables are defined, so it is not possible to use them in template expressions.'
+      Write-Output '    variables.var_defined_at_ui_level: ${{ variables.var_defined_at_ui_level }}'
 ```
 
-and the output is:
+produces this output:
 
 [![ui defined template expression evaluation output](images/template-expressions-ui-level-variables-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=262&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=19)
 
@@ -64,4 +64,23 @@ TBD
 
 ## Nested evaluation is NOT supported
 
-TBD
+If you try to start a [pipeline]([TBD](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/bffef5b3de5e94c85905867aaa2e757a8b0ea817/pipelines/template-expressions-nested-invalid.yml)) with similar yaml:
+
+```yaml
+  variables:
+    - name: var_some_number
+      value: 3
+    - name: var_some_second_number
+      value: 3
+    - name: var_for_crazy_template_expression
+      value: 'number, variables.var'
+    - name: var_template_expression_containing_crazy_compile_expression
+      value: ${{ eq(variables.var_some_${{ variables.var_for_crazy_template_expression }}_some_second_number) }}
+
+  steps:
+    - pwsh: echo 'Just some step'
+```
+
+then an attempt to start the pipeline ends with an error:
+
+![nested template expression error](images/template-expression-nested-error.png)
