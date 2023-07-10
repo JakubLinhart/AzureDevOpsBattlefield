@@ -99,6 +99,8 @@ then the pipeline starts but the initialization job fails with an error:
 
 ## Macros can utilize UI-defined variables
 
+Why is it important to mention this fact? Because it highlights an important distinction from template expressions: they are unable to use variables defined at the UI level.
+
 If `var_defined_at_ui_level` is defined on the [UI level](https://dev.azure.com/linj/AzureDevOpsBattleground/_apps/hub/ms.vss-build-web.ci-designer-hub?pipelineId=10&branch=main&nonce=HGlMs1aI5oNaFTk1n7Zwcw%3D%3D):
 
 ![var_defined_at_ui_level variable definition](images/macros-ui-level-variables.png)
