@@ -1,0 +1,74 @@
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    include:
+      - pipelines/template-expressions.yml
+
+variables:
+  - name: var_using_variable_not_defined_yet
+    value: 'this comes from one variable and: "${{ variables.var_for_other_variable }}"'
+  - name: var_for_other_variable
+    value: 'this comes from a referenced variable'
+  - name: var_using_template_expression
+    value: 'this comes from one variable and: "${{ variables.var_for_other_variable }}"'
+
+  - name: var_task_name
+    value: 'pwsh'
+  - name: var_boolean_true
+    value: 'true'
+
+  - name: var_some_number
+    value: 3
+  - name: var_some_second_number
+    value: 3
+  - name: var_for_crazy_template_expression
+    value: 'number, variables.var'
+  # - name: var_template_expression_containing_crazy_compile_expression
+  #   # Unexpected symbol: 'var_some_${{'. Located at position 14 within expression: eq(variables.var_some_${{ variab...
+  #   value: ${{ eq(variables.var_some_${{ variables.var_for_crazy_compile_expression }}_some_second_number) }}
+
+stages:
+  - stage: stage1
+    jobs:
+      - job: job1
+        displayName: Job with steps validating template expression usage
+        steps:
+          - checkout: none
+
+          - pwsh: |
+              Write-Output 'Variable value containing template expression. The referenced variable is put into "".'
+              Write-Output '    variables.var_using_template_expression: ''${{ variables.var_using_template_expression }}'''
+
+              Write-Output ''
+              Write-Output 'Variable value containing template expression. The referenced variable is put into "",'
+              Write-Output 'but is defined after using it, so it is evaluated to an empty string.'
+              Write-Output '    variables.var_using_variable_not_defined_yet: ''${{ variables.var_using_variable_not_defined_yet }}'''
+
+              Write-Output ''
+              Write-Output 'Template expressions are evaluated before UI variables are defined, so it is not possible to use them in template expressions.'
+              Write-Output '    variables.var_defined_at_ui_level: ${{ variables.var_defined_at_ui_level }}'
+
+              Write-Output ''
+              Write-Output 'Undefined variables in template expression is evaluated to an empty string.'
+              Write-Output '    variables.var_undefined: ''${{ variables.var_undefined }}'''
+
+              Write-Output ''
+              Write-Output 'Can contain functions and operators.'
+              Write-Output '    eq(variables.var_boolean_true,''True''): ''${{ eq(variables.var_boolean_true,'True') }}'''
+              Write-Output '    ne(variables.var_boolean_true,''True''): ''${{ ne(variables.var_boolean_true,'True') }}'''
+            displayName: Check template expressions
+
+          - ${{ if eq(variables.var_boolean_true,'True') }}:
+            - pwsh: |
+                Write-Output 'Task in a template if. There is no task with name ''Task in a template if, expression evaluated to false'''
+                Write-Output 'because it is defined in template if with expression evaluated to false.'
+              displayName: Task in a template if
+
+          - ${{ if ne(variables.var_boolean_true,'True') }}:
+            - pwsh: Write-Output 'Task in a template if, expression evaluated to false'
+              display: Task in a template if, expression evaluated to false
+  
+          - ${{ variables.var_task_name }}: Write-Output 'Hello from a task defined by template expression.'
+            displayName: The task name is defined by a template expression
