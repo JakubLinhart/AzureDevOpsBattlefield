@@ -1,0 +1,14 @@
+trigger: none
+
+variables:
+  - name: var_some_number
+    value: 3
+  - name: var_some_second_number
+    value: 3
+  - name: var_for_crazy_template_expression
+    value: 'number, variables.var'
+  - name: var_template_expression_containing_crazy_compile_expression
+    value: ${{ eq(variables.var_some_${{ variables.var_for_crazy_template_expression }}_some_second_number) }}
+
+steps:
+  - pwsh: echo 'Just some step'
