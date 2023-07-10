@@ -10,15 +10,17 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 > Macro syntax is designed to interpolate variable values into task inputs and into other variables.
 
-- Macros can be used in the majority of task inputs, such as the "script".
-- Macros can also be used in variable value definitions.
-- Macros can be used in the "env" section.
-- In general, macros cannot be used at the task property level.
-- Macros can utilize UI-defined variables.
-- Macros are evaluated lazily, variable definition order is not relevant.
-- Nested expansion is supported.
-- Variables referenced by macros can be defined using runtime expressions.
-- Undefined variables preserve macro syntax in expansions.
+- [Macros can be used in the majority of task inputs, such as the "script"](#macros-can-be-used-in-the-majority-of-task-inputs-such-as-the-script)
+- [Macros can also be used in variable value definitions](#macros-can-also-be-used-in-variable-value-definitions)
+- [Macros can be used in the "env" section.](#macros-can-be-used-in-the-env-section)
+- [In general, macros cannot be used at the task property level](#in-general-macros-cannot-be-used-at-the-task-property-level)
+- [Macros can utilize UI-defined variables](#macros-can-utilize-ui-defined-variables)
+- [Macros are evaluated lazily, variable definition order is not relevant](#macros-are-evaluated-lazily-variable-definition-order-is-not-relevant)
+- [Nested expansion is supported](#nested-expansion-is-supported)
+- [Variables referenced by macros can be defined using runtime expressions](#variables-referenced-by-macros-can-be-defined-using-runtime-expressions)
+- [Undefined variables preserve macro syntax in expansions](#undefined-variables-preserve-macro-syntax-in-expansions)
+
+### Macros - details
 
 #### Macros can be used in the majority of task inputs, such as the "script"
 
