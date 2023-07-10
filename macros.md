@@ -198,7 +198,7 @@ you will get this output:
 
 For more information see [Runtime expressions](/#runtime-expressions) chapter.
 
-## Undefined variables preserve macro syntax in expansions
+## Undefined variables preserve macro syntax
 
 `$(undefined_variable)` is expanded to `$(undefined_variable)` when `undefined_variable` is not defined. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5aa439679c34ae8a7dec235517d2d2c750ce7481/pipelines/macros.yml#L68):
 

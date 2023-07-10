@@ -18,7 +18,7 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [Macros are evaluated lazily, variable definition order is not relevant.](macros.md#macros-are-evaluated-lazily-variable-definition-order-is-not-relevant)
 - [Nested evaluation is NOT supported.](macros.md#nested-expansion-is-supported)
 - [Variables referenced by macros can be defined using runtime expressions.](macros.md#variables-referenced-by-macros-can-be-defined-using-runtime-expressions)
-- [Undefined variables preserve macro syntax in expansions.](macros.md#undefined-variables-preserve-macro-syntax-in-expansions)
+- [An undefined variable preserve macro syntax.](macros.md#undefined-variables-preserve-macro-syntax)
 
 ## Runtime expressions
 
