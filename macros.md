@@ -41,7 +41,7 @@ This is [possible](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5
     my_environment_variable: $(var_my_environment_variable)
 ```
 
-[![Example output](images/macros-env.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=67bb029a-943e-5196-8d89-e7392cea21c1&l=12)
+[![Example output](images/macros-env-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=67bb029a-943e-5196-8d89-e7392cea21c1&l=12)
 
 ## In general, macros cannot be used at the task property level
 
@@ -61,7 +61,7 @@ steps:
 
 then the [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build?definitionId=11) doesn't even start and you get this error:
 
-![enabled and continueOnError with macros](images/macros-invalid-properties1.png)
+![enabled and continueOnError with macros](images/macros-invalid-properties1-error.png)
 
 If you try to use macros in integer properties, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/4c4ba82de8ba0ba95ec74f380e01e3c1a8eed4fe/pipelines/macros-invalid-properties2.yml):
 
@@ -78,7 +78,7 @@ If you try to use macros in integer properties, for [example](https://github.com
 
 then the [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build?definitionId=12&_a=summary) doesn't even start and you get this error:
 
-![retryCountOnTaskFailure, timeoutInMinutes](images/macros-invalid-properties2.png)
+![retryCountOnTaskFailure, timeoutInMinutes](images/macros-invalid-properties2-error.png)
 
 If you try to use a macro in a condition, for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/macros-invalid-properties3.yml):
 
@@ -95,7 +95,7 @@ If you try to use a macro in a condition, for [example](https://github.com/Jakub
 
 then the pipeline starts but the initialization job fails with an error:
 
-[![condition](images/macros-invalid-properties3.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=246&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=e0f977f9-ef87-4bf0-b7e2-aeee2c074101&l=14)
+[![condition](images/macros-invalid-properties3-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=246&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=e0f977f9-ef87-4bf0-b7e2-aeee2c074101&l=14)
 
 ## Macros can utilize UI-defined variables
 
@@ -110,7 +110,8 @@ then you can always do for [example](https://github.com/JakubLinhart/AzureDevOps
       Write-Output '(var_defined_at_ui_level) ''$(var_defined_at_ui_level)'''
 ```
 
-![example output](images/macros-ui-level-variable-output.png)
+[![example output](images/macros-ui-level-variable-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=247&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=12)
+
 
 ## Macros are evaluated lazily, variable definition order is not relevant
 
@@ -133,4 +134,4 @@ TBD
   Write-Output '(undefined_variable) ''$(undefined_variable)'''
 ```
 
-[![Example output](images/macros-undefined-variable.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=16)
+[![Example output](images/macros-undefined-variable-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=245&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=16)
