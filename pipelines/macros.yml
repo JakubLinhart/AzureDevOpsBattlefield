@@ -21,6 +21,8 @@ variables:
     value: '$(var_with_value_for_another_value)'
   - name: variable_name_fragment
     value: 'with_value'
+  - name: var_runtime_expression
+    value: $[eq(variables.variable_name_fragment, 'something else')]
 
   - name: var_script
     value: |
@@ -68,6 +70,12 @@ stages:
               Write-Output '(var_with_macro_in_value_at_job_level) ''$(var_with_macro_in_value_at_job_level)'''
               Write-Output '(var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level) ''$(var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level)'''
             displayName: Macro in variable value
+
+          - pwsh: |
+              Write-Output 'If you define a variable with this value: $[eq(variables.variable_name_fragment, 'something else')],'
+              Write-Output 'then you get ''False'' because variable_name_fragment is set to ''with_value''. You can use the variable in a macro:'
+              Write-Output '    (var_runtime_expression): $(var_runtime_expression)'
+            displayName: Macro using variables defined by a runtime expression
 
           - pwsh: |
               Write-Output '(var_(variable_name_fragment)_for_another_value) ''$(var_$(variable_name_fragment)_for_another_value)'''

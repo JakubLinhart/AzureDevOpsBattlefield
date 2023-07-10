@@ -174,7 +174,23 @@ and the output shows that only inner macro is evaluated:
 
 ## Variables referenced by macros can be defined using runtime expressions
 
-TBD
+Runtime expressions are evaluated at the job level, which means that they are evaluated before macros. Consequently, macros can utilize variables defined by runtime expressions. 
+
+For [example](TBD)
+
+```yaml
+variables:
+  - name: variable_name_fragment
+    value: 'with_value'
+  - name: var_runtime_expression
+    value: $[eq(variables.variable_name_fragment, 'something else')]
+
+- steps:
+    - pwsh: |
+        Write-Output '    (var_runtime_expression): $(var_runtime_expression)'
+```
+
+For more information see [Runtime expressions](/#runtime-expressions) chapter.
 
 ## Undefined variables preserve macro syntax in expansions
 
