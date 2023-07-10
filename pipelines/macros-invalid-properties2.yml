@@ -1,3 +1,5 @@
+trigger: none
+
 variables:
   - name: var_some_number
     value: 3

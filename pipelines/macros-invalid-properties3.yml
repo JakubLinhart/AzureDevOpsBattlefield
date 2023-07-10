@@ -1,3 +1,5 @@
+trigger: none
+
 variables:
   - name: var_condition
     value: always()
