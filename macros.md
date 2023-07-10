@@ -128,7 +128,29 @@ then you can always do for [example](https://github.com/JakubLinhart/AzureDevOps
 
 ## Macros are evaluated lazily, variable definition order is not relevant
 
-Variable definitions can contain macros with variables that are not defined yet. For example, you can use a job-level variable when defining a stage-level variable, as long as both variables exist during the final evaluation.
+Variable definitions can contain macros with variables that are not defined yet. For example, you can use a job-level variable when defining a stage-level variable, as long as both variables exist during the final evaluation. For [example]([TBD](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/3809e67afa8b7f57a1f439ee9d293e9f8103ff94/pipelines/macros.yml#L69)):
+
+```yaml
+variables:
+  - name: var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level
+    value: 'this part was defined at pipliene level, $(var_with_value_for_another_value_at_job_level)'
+
+stages:
+  - stage: stage1
+    jobs:
+      - job: job1
+        variables:
+          - name: var_with_value_for_another_value_on_job_level
+            value: 'this part was defined at job level'
+
+        steps:
+          - pwsh: |
+              Write-Output '(var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level) ''$(var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level)'''
+```
+
+`var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level` is defined before `var_with_value_for_another_value_on_job_level` and the variable is evaluated in the right way:
+
+[![lazy evaluation](images/macros-lazy-evaluation-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=247&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=f064c65f-5d7b-5dd9-a2c0-b27c2b3dbefa&l=16)
 
 ## Nested expansion is supported
 

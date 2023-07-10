@@ -31,9 +31,3 @@ TBD
 ## Template parameters
 
 TBD
-
-## Runtime expressions - details
-
-## Template expressions - details
-
-## Template parameters - details
