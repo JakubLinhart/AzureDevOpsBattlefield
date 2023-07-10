@@ -6,7 +6,7 @@ trigger:
     include:
       - AzureDevOpsBattleground/macros-invalid-properties1.yml
 
-tasks:
+steps:
   - pwsh: Write-Output 'some step'
     displayName: 'A task with macros in properties'
     enabled: '$(var_some_boolean)' # doesn't pass pipeline start validation, because true/false is expected on compile time
