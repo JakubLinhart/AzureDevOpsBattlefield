@@ -30,6 +30,7 @@ For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9db841
 ```
 
 and the output is:
+
 [![undefined variable ouptut](images/template-expressions-undefined-variable-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=262&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=22)
 
 ## UI-defined variables are unavailable in template expressions
