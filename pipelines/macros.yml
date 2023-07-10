@@ -4,7 +4,7 @@ trigger:
     - master
   paths:
     include:
-      - AzureDevOpsBattleground/macros.yml
+      - macros.yml
 
 variables:
   - name: var_defined_at_pipeline_level

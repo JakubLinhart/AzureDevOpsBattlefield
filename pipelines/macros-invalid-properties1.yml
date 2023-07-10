@@ -1,11 +1,3 @@
-trigger:
-  branches:
-    include:
-    - master
-  paths:
-    include:
-      - AzureDevOpsBattleground/macros-invalid-properties1.yml
-
 variables:
   - name: var_some_boolean
     value: true
