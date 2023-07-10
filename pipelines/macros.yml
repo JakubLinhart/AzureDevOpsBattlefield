@@ -4,7 +4,7 @@ trigger:
     - main
   paths:
     include:
-      - macros.yml
+      - pipelines/macros.yml
 
 variables:
   - name: var_defined_at_pipeline_level
