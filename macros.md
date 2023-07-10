@@ -99,7 +99,18 @@ then the pipeline starts but the initialization job fails with an error:
 
 ## Macros can utilize UI-defined variables
 
-TBD
+If `var_defined_at_ui_level` is defined on the [UI level](https://dev.azure.com/linj/AzureDevOpsBattleground/_apps/hub/ms.vss-build-web.ci-designer-hub?pipelineId=10&branch=main&nonce=HGlMs1aI5oNaFTk1n7Zwcw%3D%3D):
+
+![var_defined_at_ui_level variable definition](images/macros-ui-level-variables.png)
+
+then you can always do for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9c194652fa23fd63230e65d6765e69a91687fc91/pipelines/macros.yml#L57C16-L57C16) this:
+
+```yaml
+  - pwsh: |
+      Write-Output '(var_defined_at_ui_level) ''$(var_defined_at_ui_level)'''
+```
+
+![example output](images/macros-ui-level-variable-output.png)
 
 ## Macros are evaluated lazily, variable definition order is not relevant
 
