@@ -98,7 +98,7 @@ When you try to start a [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleg
 
 Template expressions are evaluated before including the content of a template, enabling dynamic usage of a template with a name defined by a variable.
 
-Consider the following [pipeline](TBD):
+Consider the following [pipeline](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/3e1dc5cef42bc9e587294adfdd9ab6ea3dfc0926/pipelines/template-parameters.yml#L30):
 
 ```yaml
   variables:
@@ -115,3 +115,5 @@ Consider the following [pipeline](TBD):
 ```
 
 In this case, the pipeline correctly executes the template-parameters-weak.yml template:
+
+[![template name defined by template expression](images/template-parameters-expression-as-template-name.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=308&view=logs&j=22c52269-d8a2-54ec-0d9c-8f4cb7759146&t=16dbadd7-cbd8-5619-9edd-8ba5df7dae3a&l=12)
