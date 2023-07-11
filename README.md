@@ -2,7 +2,7 @@
 
 This GitHub repository aims to provide a comprehensive resource for learning Azure DevOps, specifically focusing on features such as templates and runtime expressions. The objective of this project is to offer a practical and methodical approach to understanding the complexities of Azure DevOps.
 
-It is important to note that this repository does not claim to provide exhaustive documentation of all Azure DevOps features. Rather, it serves as a space for experimentation, learning, and gaining a deeper understanding of the features offered by Azure DevOps.
+It is important to note that this repository does not claim to provide exhaustive documentation of all Azure DevOps features, nor does it serve as a comprehensive Azure DevOps tutorial. Instead, it serves as a space for experimentation, learning, and gaining a deeper understanding of the features offered by Azure DevOps.
 
 ## Macros
 
