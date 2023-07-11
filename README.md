@@ -35,4 +35,9 @@ TBD
 
 ## Template parameters
 
-TBD
+- [Unknown parameters cannot be passed to strongly typed templates.](template-parameters.md#unknown-parameters-cannot-be-passed-to-strongly-typed-templates)
+- [All parameters without a default value must be specified for strongly typed templates.](template-parameters.md#all-parameters-without-a-default-value-must-be-specified-for-strongly-typed-templates)
+- [Unknown parameters can be passed to weakly typed templates.](template-parameters.md#unknown-parameters-can-be-passed-to-weakly-typed-templates)
+- [Unspecified parameters without a default value are evaluated as an empty string in weakly typed templates.](template-parameters.md#unspecified-parameters-without-a-default-value-are-evaluated-as-an-empty-string-in-weakly-typed-templates)
+- [Template expressions cannot be used for parameter defaults.](template-parameters.md#template-expressions-cannot-be-used-for-parameter-defaults)
+- [A template expression can specify a template name.](template-parameters.md#a-template-expression-can-specify-a-template-name)

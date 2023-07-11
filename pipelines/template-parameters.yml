@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/template-parameters.yml
+
+variables:
+  - name: var_template_name
+    value: template-parameters-weak.yml
+
+stages:
+  - stage: stage1
+    jobs:
+      - job: job1
+        steps:
+          - checkout: none
+
+          - template: template-parameters-strong.yml
+            parameters:
+              parameter1: 'value of parameter1'
+              # parameter_not_defined_in_template: 'value of parameter not defined in template' # Unexpected parameter 'parameter_not_defined_in_template'
+
+      - template: template-parameters-weak.yml
+        parameters:
+          job_suffix: 'fist'
+          parameter_not_defined_in_template: 'value of parameter not defined in template'
+
+      - template: ${{ variables.var_template_name }}
+        parameters:
+          job_suffix: 'second'
+          parameter_not_defined_in_template: 'value of parameter not defined in template'

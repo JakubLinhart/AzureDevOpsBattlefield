@@ -1,0 +1,29 @@
+parameters:
+  - name: parameter1
+    type: string
+    default: 'parameter1 default value'
+  - name: parameter_with_defualt_value
+    type: string
+    default: 'parameter_with_defualt_value default value'
+  # - name: parameter_with_template_expression_in_default # A template expression is not allowed in this context
+  #   type: string
+  #   default: ${{ parameters.parameter1 }}
+  # - name: parameter_with_template_expression_in_default # A template expression is not allowed in this context
+  #   type: string
+  #   default: ${{ variables.undefined_variable }} # A template expression is not allowed in this context
+  # - name: parameter_without_default_value # A value for the 'parameter_without_default_value' parameter must be provided.
+  #   type: string
+
+steps:
+  - pwsh: |
+      Write-Output 'Parameter value specified as template argument.'
+      Write-Output '    parameters.parameter1: ''${{ parameters.parameter1 }}'''
+
+      Write-Output ''
+      Write-Output 'Unspecified parameter, default value is used.'
+      Write-Output '    parameters.parameter_with_defualt_value: ''${{ parameters.parameter_with_defualt_value }}'''
+
+#      Write-Output ''
+#      Write-Output 'Undefined parameter is expanded to an empty string.'
+#      Write-Output '    parameters.parameter_without_default_value: ''${{ parameters.undefined_parameter }}''' # Key not found 'undefined_parameter'
+    displayName: 'Check strongly typed parameters'
