@@ -66,7 +66,7 @@ stages:
           - pwsh: |
               Write-Output 'Runtime expression can contain a template expression. The template expression evaluates runtime expression body to:'
               Write-Output '[eq(variables.var_some_number1,variables.var_some_number2)] which evaluates correctly to ''True''. It would be evaluated to ''False'''
-              Write-Output 'when the template expression wouldn't be evaluated before the runtime expression.'
+              Write-Output 'when the template expression wouldn''t be evaluated before the runtime expression.'
               Write-Output '    (var_with_template_in_runtime_expression): ''$(var_with_template_in_runtime_expression)'''
               Write-Output ''
 
