@@ -1,0 +1,13 @@
+parameters:
+  - name: parameter1
+    type: string
+    default: 'parameter1 default value'
+  - name: parameter_with_template_expression_in_default
+    type: string
+    default: ${{ parameters.parameter1 }}
+  - name: parameter_with_template_expression_in_default
+    type: string
+    default: ${{ variables.var_some_variable }}
+
+steps:
+  - checkout: none

@@ -7,12 +7,6 @@ parameters:
     default: 'parameter_with_defualt_value default value'
   - name: parameter_without_default_value
     type: string
-  # - name: parameter_with_template_expression_in_default # A template expression is not allowed in this context
-  #   type: string
-  #   default: ${{ parameters.parameter1 }}
-  # - name: parameter_with_template_expression_in_default # A template expression is not allowed in this context
-  #   type: string
-  #   default: ${{ variables.undefined_variable }} # A template expression is not allowed in this context
 
 steps:
   - pwsh: |
@@ -23,7 +17,4 @@ steps:
       Write-Output 'Unspecified parameter, default value is used.'
       Write-Output '    parameters.parameter_with_defualt_value: ''${{ parameters.parameter_with_defualt_value }}'''
 
-#      Write-Output ''
-#      Write-Output 'Undefined parameter is expanded to an empty string.'
-#      Write-Output '    parameters.parameter_without_default_value: ''${{ parameters.undefined_parameter }}''' # Key not found 'undefined_parameter'
     displayName: 'Check strongly typed parameters'
