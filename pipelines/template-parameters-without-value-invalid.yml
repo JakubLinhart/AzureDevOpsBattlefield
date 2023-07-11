@@ -6,4 +6,4 @@ steps:
   - template: template-parameters-strong.yml
     parameters:
       parameter1: 'value of parameter1'
-      parameter_not_defined_in_template: 'value of parameter not defined in template'
+    # parameter_without_default_value is not provided
