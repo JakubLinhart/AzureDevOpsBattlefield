@@ -27,10 +27,6 @@ variables:
     value: 'number1,variables.var'
   - name: var_with_template_in_runtime_expression
     value: $[eq(variables.var_some_${{ variables.var_part_of_runtime_expression }}_some_number2)]
-  - name: var_with_runtime_expression
-    value: $[eq(variables.var_some_number1, variables.var_some_number2)]
-  - name: var_with_runtime_in_template_expression
-    value: ${{ variables.var_with_runtime_expression }}
 
 stages:
   - stage: stage1
@@ -69,10 +65,6 @@ stages:
               Write-Output 'when the template expression wouldn''t be evaluated before the runtime expression.'
               Write-Output '    (var_with_template_in_runtime_expression): ''$(var_with_template_in_runtime_expression)'''
               Write-Output ''
-
-              Write-Output 'Template expression can contain runtime expression. Template expression is evaluated as first and then the runtime expression follows.'
-              Write-Output '    (var_with_runtime_expression): ''$(var_with_runtime_expression)'''
-              Write-Output '    (var_with_runtime_in_template_expression): ''$(var_with_runtime_in_template_expression)'''
 
             displayName: Runtime vs. template expressions 
 

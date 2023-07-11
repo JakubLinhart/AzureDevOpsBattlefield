@@ -106,3 +106,33 @@ If you try to start a [pipeline](https://github.com/JakubLinhart/AzureDevOpsBatt
 then an attempt to start the pipeline ends with an error:
 
 ![nested template expression error](images/template-expression-nested-error.png)
+
+## Templates expression can be used in runtime expressions
+
+The definitive conclusion is that template expressions are evaluated before runtime expressions. Consequently, you can incorporate template expressions within runtime expressions.
+
+For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/2fb3752d3b0f4f915e0513c5b6b341e5a42d22dc/pipelines/template-expressions.yml#L67C14-L67C14):
+
+```yaml
+variables:
+  - name: var_some_number1
+    value: 2
+  - name: var_some_number2
+    value: 2
+
+  - name: var_part_of_runtime_expression
+    value: 'number1,variables.var'
+  - name: var_with_template_in_runtime_expression
+    value: $[eq(variables.var_some_${{ variables.var_part_of_runtime_expression }}_some_number2)]
+
+steps:
+  - pwsh: |
+      Write-Output 'Runtime expression can contain a template expression. The template expression evaluates runtime expression body to:'
+      Write-Output '[eq(variables.var_some_number1,variables.var_some_number2)] which evaluates correctly to ''True''. It would be evaluated to ''False'''
+      Write-Output 'when the template expression wouldn''t be evaluated before the runtime expression.'
+      Write-Output '    (var_with_template_in_runtime_expression): ''$(var_with_template_in_runtime_expression)'''
+```
+
+and the output is:
+
+[![template in runtime expression](images/template-expressions-in-runtime-expression-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=273&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=f064c65f-5d7b-5dd9-a2c0-b27c2b3dbefa&l=12)

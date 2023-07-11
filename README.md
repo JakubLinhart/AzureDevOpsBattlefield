@@ -31,6 +31,7 @@ TBD
 - [UI-defined variables are unavailable in template expressions.](template-expressions.md#ui-defined-variables-are-unavailable-in-template-expressions)
 - [The order of variable definitions is important.](template-expressions.md#the-order-of-variable-definitions-is-important)
 - [Nested evaluation is NOT supported.](template-expressions.md#nested-evaluation-is-not-supported)
+- [Templates expression can be used in runtime expressions.](template-expressions.md#templates-expression-can-be-used-in-runtime-expressions)
 
 ## Template parameters
 
