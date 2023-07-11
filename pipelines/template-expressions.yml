@@ -18,6 +18,19 @@ variables:
     value: 'pwsh'
   - name: var_boolean_true
     value: 'true'
+  - name: var_some_number1
+    value: 2
+  - name: var_some_number2
+    value: 2
+
+  - name: var_part_of_runtime_expression
+    value: 'number1,variables.var'
+  - name: var_with_template_in_runtime_expression
+    value: $[eq(variables.var_some_${{ variables.var_part_of_runtime_expression }}_some_number2)]
+  - name: var_with_runtime_expression
+    value: $[eq(variables.var_some_number1, variables.var_some_number2)]
+  - name: var_with_runtime_in_template_expression
+    value: ${{ variables.var_with_runtime_expression }}
 
 stages:
   - stage: stage1
@@ -50,5 +63,18 @@ stages:
               Write-Output '    ne(variables.var_boolean_true,''True''): ''${{ ne(variables.var_boolean_true,'True') }}'''
             displayName: Check template expressions
   
+          - pwsh: |
+              Write-Output 'Runtime expression can contain a template expression. The template expression evaluates runtime expression body to:'
+              Write-Output '[eq(variables.var_some_number1,variables.var_some_number2)] which evaluates correctly to ''True''. It would be evaluated to ''False'''
+              Write-Output 'when the template expression wouldn't be evaluated before the runtime expression.'
+              Write-Output '    (var_with_template_in_runtime_expression): ''$(var_with_template_in_runtime_expression)'''
+              Write-Output ''
+
+              Write-Output 'Template expression can contain runtime expression. Template expression is evaluated as first and then the runtime expression follows.'
+              Write-Output '    (var_with_runtime_expression): ''$(var_with_runtime_expression)'''
+              Write-Output '    (var_with_runtime_in_template_expression): ''$(var_with_runtime_in_template_expression)'''
+
+            displayName: Runtime vs. template expressions 
+
           - ${{ variables.var_task_name }}: Write-Output 'Hello from a task defined by template expression.'
             displayName: The task name is defined by a template expression
