@@ -41,7 +41,7 @@ If you have a variable defined at the UI level:
 
 ![var_defined_at_ui_level variable definition](images/template-expressions-ui-level-variables.png)
 
-then for [example]([TBD](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9db84151d6a37aae91ebda190ad7ac7c662a51f7/pipelines/template-expressions.yml#L51C82-L51C106)):
+then for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/9db84151d6a37aae91ebda190ad7ac7c662a51f7/pipelines/template-expressions.yml#L51C82-L51C106):
 
 ```yaml
   - pwsh: |
@@ -86,7 +86,7 @@ So the output for this example looks like this:
 
 ## Nested evaluation is NOT supported
 
-If you try to start a [pipeline]([TBD](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/bffef5b3de5e94c85905867aaa2e757a8b0ea817/pipelines/template-expressions-nested-invalid.yml)) with similar yaml:
+If you try to start a [pipeline](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/bffef5b3de5e94c85905867aaa2e757a8b0ea817/pipelines/template-expressions-nested-invalid.yml) with similar yaml:
 
 ```yaml
   variables:
