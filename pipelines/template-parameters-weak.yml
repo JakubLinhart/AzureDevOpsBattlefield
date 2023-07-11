@@ -7,7 +7,13 @@ jobs:
   - job: job2_${{ parameters.job_suffix }}
     dependsOn: job1
     steps:
+      - checkout: none
+
       - pwsh: |
+          Write-Output 'This is part of template-parameters-weak.yml'
+          Write-Output '--------------------------------------------'
+          Write-Output ''
+
           Write-Output 'Parameter not defined in template but its value is specified as template argument.'
           Write-Output '    parameters.parameter_not_defined_in_template: ''${{ parameters.parameter_not_defined_in_template }}'''
 

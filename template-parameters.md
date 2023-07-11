@@ -96,4 +96,22 @@ When you try to start a [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleg
 
 ## A template expression can specify a template name
 
-TBD
+Template expressions are evaluated before including the content of a template, enabling dynamic usage of a template with a name defined by a variable.
+
+Consider the following [pipeline](TBD):
+
+```yaml
+  variables:
+    - name: var_template_name
+      value: template-parameters-weak.yml
+
+  jobs:
+    - job: job1
+      steps:
+        - template: ${{ variables.var_template_name }}
+          parameters:
+            job_suffix: 'second'
+            parameter_not_defined_in_template: 'value of parameter not defined in template'
+```
+
+In this case, the pipeline correctly executes the template-parameters-weak.yml template:
