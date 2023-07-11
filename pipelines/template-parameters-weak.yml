@@ -12,7 +12,7 @@ parameters:
 jobs:
   - job: job2_${{ parameters.job_suffix }}
     dependsOn: job1
-    variables:
+    #variables:
       # Unrecognized value: 'parameters'. Located at position 4 within expression: eq(parameters.parameter_first_number, parameters.parameter_second_number).
       # - name: var_with_runtime_expression_referencing_parameters
       #   value: $[eq(parameters.parameter_first_number, parameters.parameter_second_number)]
