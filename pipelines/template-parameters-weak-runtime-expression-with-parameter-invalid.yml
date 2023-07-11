@@ -1,0 +1,4 @@
+trigger: none
+
+jobs:
+  - template: template-parameters-weak-runtime-expression-with-parameter-invalid-template.yml

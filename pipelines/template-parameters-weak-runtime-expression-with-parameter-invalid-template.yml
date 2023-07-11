@@ -1,0 +1,10 @@
+parameters:
+  parameter_first_number: 3
+  parameter_second_number: 3
+
+jobs:
+  - job: job1
+    variables:
+      - name: var_with_runtime_expression_referencing_parameters
+        value: $[eq(parameters.parameter_first_number, parameters.parameter_second_number)]
+
