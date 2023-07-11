@@ -70,7 +70,7 @@ Consider a [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blo
 
 If you try to start a pipeline using such a template, you will get this error:
 
-![template expressions in parameter default values](images/template-parameters-strong-default-with-expression-invalid-error.png)
+[![template expressions in parameter default values](images/template-parameters-strong-default-with-expression-invalid-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=19&_a=summary)
 
 ## A template expression can specify a template name
 
