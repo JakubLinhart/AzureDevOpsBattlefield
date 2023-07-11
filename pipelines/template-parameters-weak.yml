@@ -1,9 +1,5 @@
 parameters:
   parameter1: 'parameter1 default value'
-  # parameter${{ variables.undefined_variable}}2: 'some default value' # A template expression is not allowed in this context
-  # parameter_with_template_expression_in_default: ${{ parameters.parameter1 }} # A template expression is not allowed in this context
-  # parameter_with_template_expression_in_default: ${{ variables.undefined_variable }} # A template expression is not allowed in this context
-  parameter_name_of_other_parameter: 'parameter_final'
   parameter_final: 'parameter name define by other parameter'
   parameter_first_number: 3
   parameter_second_number: 3
@@ -25,7 +21,3 @@ jobs:
           Write-Output 'Undefined parameter is expanded to an empty string.'
           Write-Output '    parameters.parameter_without_default_value: ''${{ parameters.undefined_parameter }}'''
         displayName: 'Check weakly typed parameters'
-          # Write-Output ''
-          # Write-Output 'Parameter can define the name of parameter that is finally used. This shows nested parameter evaluation.'
-          # # Unexpected symbol: 'parameters'. Located at position 5 within expression: ${{ parameters.parameter_nam...
-          # Write-Output '    parameters.parameter_name_of_other_parameter: ''${{ ${{ parameters.parameter_name_of_other_parameter }} }}'''
