@@ -72,7 +72,7 @@ If you try to start a pipeline using such a template, you will get this error:
 
 [![template expressions in parameter default values](images/template-parameters-strong-default-with-expression-invalid-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=19&_a=summary)
 
-The same limitation applies to weakly typed [templates](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/template-parameters-weak-default-with-expression-invalid-template.yml) and the related [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=20&_a=summary)
+The same limitation applies to weakly typed [templates](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/template-parameters-weak-default-with-expression-invalid-template.yml) and the related [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=20&_a=summary).
 
 ## A template expression can specify a template name
 
