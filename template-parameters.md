@@ -56,7 +56,21 @@ TBD
 
 ## Template expressions cannot be used for parameter defaults
 
-TBD
+Consider a [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/104d84b7a8599073912138ab33db3f72fedc3702/pipelines/template-parameters-strong-default-with-expression-invalid-template.yml) with these parameters and containing template expressions in default value definitions:
+
+```yaml
+  parameters:
+    - name: parameter_with_template_expression_in_default
+      type: string
+      default: ${{ parameters.parameter1 }}
+    - name: parameter_with_template_expression_in_default
+      type: string
+      default: ${{ variables.var_some_variable }}
+```
+
+If you try to start a pipeline using such a template, you will get this error:
+
+![template expressions in parameter default values](images/template-parameters-strong-default-with-expression-invalid-error.png)
 
 ## A template expression can specify a template name
 
