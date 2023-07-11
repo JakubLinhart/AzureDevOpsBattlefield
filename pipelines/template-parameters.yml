@@ -20,6 +20,7 @@ stages:
           - template: template-parameters-strong.yml
             parameters:
               parameter1: 'value of parameter1'
+              parameter_without_default_value: 'an explicit value for a parameter without a default value'
 
       - template: template-parameters-weak.yml
         parameters:
