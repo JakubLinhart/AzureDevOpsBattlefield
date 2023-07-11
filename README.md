@@ -40,4 +40,5 @@ TBD
 - [Unknown parameters can be passed to weakly typed templates.](template-parameters.md#unknown-parameters-can-be-passed-to-weakly-typed-templates)
 - [Unspecified parameters without a default value are evaluated as an empty string in weakly typed templates.](template-parameters.md#unspecified-parameters-without-a-default-value-are-evaluated-as-an-empty-string-in-weakly-typed-templates)
 - [Template expressions cannot be used for parameter defaults.](template-parameters.md#template-expressions-cannot-be-used-for-parameter-defaults)
+- [Runtime expressions cannot reference parameters.](template-parameters.md#runtime-expressions-cannot-reference-parameters)
 - [A template expression can specify a template name.](template-parameters.md#a-template-expression-can-specify-a-template-name)

@@ -74,6 +74,26 @@ If you try to start a pipeline using such a template, you will get this error:
 
 The same limitation applies to weakly typed [templates](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/template-parameters-weak-default-with-expression-invalid-template.yml) and the related [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=20&_a=summary).
 
+## Runtime expressions cannot reference parameters
+
+Consider this weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/55beb685f924d546a0cb58130dfea3d000e35c29/pipelines/template-parameters-weak-runtime-expression-with-parameter-invalid-template.yml) using a parameter in a runtime expression:
+
+```yaml
+  parameters:
+    parameter_first_number: 3
+    parameter_second_number: 3
+  
+  jobs:
+    - job: job1
+      variables:
+        - name: var_with_runtime_expression_referencing_parameters
+          value: $[eq(parameters.parameter_first_number, parameters.parameter_second_number)]
+```
+
+When you try to start a [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=21&_a=summary) utilizing this template, then you get this error:
+
+[![a runtime expression using a parameter](images/template-parameters-weak-runtime-expression-with-parameter-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=305&view=results)
+
 ## A template expression can specify a template name
 
 TBD
