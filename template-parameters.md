@@ -23,7 +23,7 @@ steps:
 
 then you will get an error when you try to run the pipeline:
 
-[![an undefined parameter in a strongly typed template](template-parameters-unknown-parameter-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=17&_a=summary)
+[![an undefined parameter in a strongly typed template](images/template-parameters-unknown-parameter-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=17&_a=summary)
 
 ## All parameters without a default value must be specified for strongly typed templates
 
