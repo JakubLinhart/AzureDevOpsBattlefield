@@ -1,0 +1,6 @@
+parameters:
+  parameter_with_template_expression_in_default: ${{ parameters.parameter1 }}
+  parameter_with_template_expression_in_default: ${{ variables.var_some_variable }}
+
+steps:
+  - checkout: none

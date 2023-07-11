@@ -1,0 +1,7 @@
+trigger: none
+
+variables:
+  var_some_variable: 'value of some variable'
+
+steps:
+  - template: template-parameters-weak-default-with-expression-invalid-template.yml
