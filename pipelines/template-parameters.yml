@@ -4,7 +4,7 @@ trigger:
     - main
   paths:
     include:
-      - pipelines/template-parameters.yml
+      - pipelines/template-parameters*.yml
 
 variables:
   - name: var_template_name
@@ -20,7 +20,6 @@ stages:
           - template: template-parameters-strong.yml
             parameters:
               parameter1: 'value of parameter1'
-              # parameter_not_defined_in_template: 'value of parameter not defined in template' # Unexpected parameter 'parameter_not_defined_in_template'
 
       - template: template-parameters-weak.yml
         parameters:

@@ -1,0 +1,19 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/template-parameters*.yml
+
+stages:
+  - stage: stage1
+    jobs:
+      - job: job1
+        steps:
+          - checkout: none
+
+          - template: template-parameters-strong.yml
+            parameters:
+              parameter1: 'value of parameter1'
+              parameter_not_defined_in_template: 'value of parameter not defined in template'
