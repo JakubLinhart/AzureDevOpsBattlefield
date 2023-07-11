@@ -35,7 +35,7 @@ parameters:
     type: string
 ```
 
-If you don't specify `parameter_without_default_value` for the template from a [pipeline YAML]():
+If you don't specify `parameter_without_default_value` for the template from a [pipeline YAML](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/template-parameters-without-value-invalid.yml):
 
 ```yaml
 steps:
