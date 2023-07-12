@@ -73,6 +73,8 @@ Then it is possible to pass a parameter to the template even though the paramete
 
 And the output is:
 
+[![parameter not defined in the template](images/template-parameters-not-defined-in-template-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=311&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=16)
+
 ## Unspecified parameters without a default value are evaluated as an empty string in weakly typed templates
 
 TBD
