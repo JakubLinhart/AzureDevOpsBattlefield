@@ -48,7 +48,7 @@ Then you cannot start the pipeline, because of this error:
 
 ## Unknown parameters can be passed to weakly typed templates
 
-Consider a weakly typed template:
+Consider a weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/77e1e2854686fa6e83e174a5bca09f0e8bf4aef2/pipelines/template-parameters-weak.yml):
 
 ```yaml
   parameters:
@@ -62,7 +62,7 @@ Consider a weakly typed template:
         Write-Output '    parameters.parameter_not_defined_in_template: ''${{ parameters.parameter_not_defined_in_template }}'''
 ```
 
-Then it is possible to pass a parameter to the template even though the parameter is not defined in the template:
+Then it is possible to pass a parameter to the template even though the parameter is not defined in the template. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/77e1e2854686fa6e83e174a5bca09f0e8bf4aef2/pipelines/template-parameters.yml#L28):
 
 ```yaml
     - template: template-parameters-weak.yml
