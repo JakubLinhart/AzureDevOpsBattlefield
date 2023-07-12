@@ -14,7 +14,7 @@ jobs:
           Write-Output '--------------------------------------------'
           Write-Output ''
 
-          Write-Output 'Parameter not defined in template but its value is specified as template argument.'
+          Write-Output 'Parameter not defined in the template, but its value is specified as a template argument.'
           Write-Output '    parameters.parameter_not_defined_in_template: ''${{ parameters.parameter_not_defined_in_template }}'''
 
           Write-Output ''

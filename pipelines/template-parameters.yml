@@ -25,9 +25,9 @@ stages:
       - template: template-parameters-weak.yml
         parameters:
           job_suffix: 'fist'
-          parameter_not_defined_in_template: 'value of parameter not defined in template'
+          parameter_not_defined_in_template: 'value of parameter not defined in the template'
 
       - template: ${{ variables.var_template_name }}
         parameters:
           job_suffix: 'second'
-          parameter_not_defined_in_template: 'value of parameter not defined in template'
+          parameter_not_defined_in_template: 'value of parameter not defined in the template'

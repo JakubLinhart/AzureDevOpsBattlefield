@@ -48,7 +48,30 @@ Then you cannot start the pipeline, because of this error:
 
 ## Unknown parameters can be passed to weakly typed templates
 
-TBD
+Consider a weakly typed template:
+
+```yaml
+  parameters:
+    parameter1: 'parameter1 default value'
+    parameter_final: 'parameter name define by other parameter'
+    job_suffix: 'first'
+
+  steps:
+    - pwsh: |
+        Write-Output 'Parameter not defined in the template, but its value is specified as a template argument.'
+        Write-Output '    parameters.parameter_not_defined_in_template: ''${{ parameters.parameter_not_defined_in_template }}'''
+```
+
+Then it is possible to pass a parameter to the template even though the parameter is not defined in the template:
+
+```yaml
+    - template: template-parameters-weak.yml
+      parameters:
+        job_suffix: 'fist'
+        parameter_not_defined_in_template: 'value of parameter not defined in the template'
+```
+
+And the output is:
 
 ## Unspecified parameters without a default value are evaluated as an empty string in weakly typed templates
 
