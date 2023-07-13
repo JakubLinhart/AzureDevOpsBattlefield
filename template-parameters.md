@@ -75,9 +75,23 @@ And the output is:
 
 [![parameter not defined in the template](images/template-parameters-not-defined-in-template-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=311&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=16)
 
-## Unspecified parameters without a default value are evaluated as an empty string in weakly typed templates
+## Undefined parameters are evaluated as an empty string in weakly typed templates
 
-TBD
+Consider this weakly typed template:
+
+```yaml
+  parameters:
+    parameter1: 'parameter1 default value'
+    job_suffix: 'first'
+
+  steps:
+    - pwsh: |
+        Write-Output ''
+        Write-Output 'Undefined parameter is expanded to an empty string.'
+        Write-Output '    parameters.undefined_parameter: ''${{ parameters.undefined_parameter }}'''
+```
+
+When you don't specify `undefined_parameter` for the template, then it remains undefined and is evaluated to an empty string:
 
 ## Template expressions cannot be used for parameter defaults
 

@@ -1,6 +1,5 @@
 parameters:
   parameter1: 'parameter1 default value'
-  parameter_final: 'parameter name define by other parameter'
   job_suffix: 'first'
 
 jobs:
@@ -19,5 +18,5 @@ jobs:
 
           Write-Output ''
           Write-Output 'Undefined parameter is expanded to an empty string.'
-          Write-Output '    parameters.parameter_without_default_value: ''${{ parameters.undefined_parameter }}'''
+          Write-Output '    parameters.undefined_parameter: ''${{ parameters.undefined_parameter }}'''
         displayName: 'Check weakly typed parameters'
