@@ -48,7 +48,7 @@ Then you cannot start the pipeline, because of this error:
 
 ## Unknown parameters can be passed to weakly typed templates
 
-Consider a weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/77e1e2854686fa6e83e174a5bca09f0e8bf4aef2/pipelines/template-parameters-weak.yml):
+Consider a weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/8c84e1fc906578dc5a9a40c6ad4ed4b80576bca5/pipelines/template-parameters-weak.yml):
 
 ```yaml
   parameters:
@@ -73,7 +73,7 @@ Then it is possible to pass a parameter to the template even though the paramete
 
 And the output is:
 
-[![parameter not defined in the template](images/template-parameters-not-defined-in-template-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=311&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=16)
+[![parameter not defined in the template](images/template-parameters-not-defined-in-template-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=315&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=16)
 
 ## Undefined parameters are evaluated as an empty string in weakly typed templates
 
@@ -91,7 +91,9 @@ Consider this weakly typed template:
         Write-Output '    parameters.undefined_parameter: ''${{ parameters.undefined_parameter }}'''
 ```
 
-When you don't specify `undefined_parameter` for the template, then it remains undefined and is evaluated to an empty string:
+When you don't specify `undefined_parameter` for the template, then it remains undefined and is evaluated as an empty string:
+
+[![undefined parameter evaluated as an empty string](images/template-parameters-weak-undefined-parameter-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=315&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=18)
 
 ## Template expressions cannot be used for parameter defaults
 
