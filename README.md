@@ -22,7 +22,16 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 ## Runtime expressions
 
-TBD
+- [Can be used for variable value definition](runtime-expressions.md#can-be-used-for-variable-value-definition)
+- [Cannot be used for task properties](runtime-expressions.md#cannot-be-used-for-task-properties)
+- [Cannot be used for task inputs](runtime-expressions.md#cannot-be-used-for-task-inputs)
+- [Evaluated at the job level](runtime-expressions.md#evaluated-at-the-job-level)
+- [Can use variables that are not defined yet](runtime-expressions.md#can-use-variables-that-are-not-defined-yet)
+- [Can use variables defined at the UI level](runtime-expressions.md#can-use-variables-defined-at-the-ui-level)
+- [Cannot contain macros](runtime-expressions.md#cannot-contain-macros)
+- [Can contain template expressions](runtime-expressions.md#can-contain-template-expressions)
+- [Can use `dependencies` and `stageDependencies`](runtime-expressions.md#can-use-dependencies-and-stagedependencies)
+- [Undefined variables are expanded to an empty string](runtime-expressions.md#undefined-variables-are-expanded-to-an-empty-string)
 
 ## Template expressions (aka compile-time expressions)
 
