@@ -10,7 +10,7 @@ steps:
 
   - pwsh: |
       Write-Output 'Environment variable cannot be defined by a runtime expression.'
-      Write-Output 'If it would be possible then var_some_string environment variable wouldn''t be empty.'
+      Write-Output 'If it was possible, the value of the var_some_string environment variable would be evaluated, but instead, the runtime expression itself is printed.'
       Write-Output "    env:var_some_string: '$env:var_some_string'"
     displayName: $[variables.var_some_string]
     env:
