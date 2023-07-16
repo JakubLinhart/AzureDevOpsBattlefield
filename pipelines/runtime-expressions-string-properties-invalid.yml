@@ -6,5 +6,12 @@ variables:
     value: some string
 
 steps:
-  - pwsh: Write-Output 'some step'
-    displayName: $[varialbes.var_some_string]
+  - checkout: none
+
+  - pwsh: |
+      Write-Output 'Environment variable cannot be defined by a runtime expression.'
+      Write-Output 'If it would be possible then var_some_string environment variable wouldn''t be empty.'
+      Write-Output "    env:var_some_string: '$env:var_some_string'"
+    displayName: $[variables.var_some_string]
+    env:
+      var_some_string: $[variables.var_some_string]
