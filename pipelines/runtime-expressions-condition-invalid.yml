@@ -1,0 +1,10 @@
+trigger: none
+pr: none
+
+variables:
+  - name: var_condition
+    value: eq(3, 3)
+
+steps:
+  - pwsh: Write-Output 'some step'
+    condition: $[var_condition]
