@@ -7,6 +7,5 @@ variables:
 
 steps:
   - pwsh: Write-Output 'some step'
-    enabled: '$[variables.var_some_boolean]'
     enabled: $[variables.var_some_boolean]
     continueOnError: $[variables.var_some_boolean]
