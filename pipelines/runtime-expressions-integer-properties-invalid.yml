@@ -1,0 +1,11 @@
+trigger: none
+pr: none
+
+variables:
+  - name: var_some_number
+    value: 3
+
+steps:
+  - pwsh: Write-Output 'some step'
+    retryCountOnTaskFailure: $[variables.var_some_number]
+    timeoutInMinutes: $[variables.var_some_number]

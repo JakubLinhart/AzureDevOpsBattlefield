@@ -1,0 +1,10 @@
+trigger: none
+pr: none
+
+variables:
+  - name: var_some_string
+    value: some string
+
+steps:
+  - pwsh: Write-Output 'some step'
+    displayName: $[varialbes.var_some_string]
