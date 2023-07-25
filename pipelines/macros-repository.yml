@@ -26,11 +26,15 @@ jobs:
     steps:
       - checkout: dynamic-repository-ui-level
 
-      - pwsh: git status
+      - pwsh: |
+          echo 'A variable defined at UI level contains ''$(var_defined_at_ui_level)'' but is evaluated to a specific commit hash, so the result of a GIT checkout is a repository with a detached head.'
+          git status
 
   - job: job2
     displayName: Pipeline level specified branch
     steps:
       - checkout: dynamic-repository-pipeline-level
 
-      - pwsh: git status
+      - pwsh: |
+          echo 'A variable defined at UI level contains ''$(var_defined_at_pipeline_level)'' but is evaluated to a specific commit hash, so the result of a GIT checkout is a repository with a detached head.'
+          git status
