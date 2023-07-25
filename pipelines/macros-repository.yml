@@ -8,7 +8,7 @@ resources:
       type: github
       endpoint: JakubLinhart
       name: JakubLinhart/AzureDevOpsBattlefield
-      ref: $(dynamicBranch)
+      ref: 701b91c2ba87176e44379d139ac5c4fcdbd818f5
 
 steps:
   - checkout: dynamic-repository
