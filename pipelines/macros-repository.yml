@@ -8,14 +8,9 @@ resources:
       type: github
       endpoint: JakubLinhart
       name: JakubLinhart/AzureDevOpsBattlefield
-      ref: $(var_defined_at_job_level)
+      ref: $(var_defined_at_ui_level)
 
-jobs:
-  - job: job1
-    variables:
-      - name: var_defined_at_job_level
-        value: dynamicBranch
-    steps:
-      - checkout: dynamic-repository
+steps:
+  - checkout: dynamic-repository
 
-      - pwsh: git status
+  - pwsh: git status
