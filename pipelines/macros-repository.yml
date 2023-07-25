@@ -2,15 +2,35 @@ trigger: none
 
 pr: none
 
+variables:
+  - name: var_defined_at_pipeline_level
+    value: dynamicBranch
+
 resources:
   repositories:
-    - repository: dynamic-repository
+    - repository: dynamic-repository-ui-level
       type: github
       endpoint: JakubLinhart
       name: JakubLinhart/AzureDevOpsBattlefield
       ref: $(var_defined_at_ui_level)
 
-steps:
-  - checkout: dynamic-repository
+    - repository: dynamic-repository-pipeline-level
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: $(var_defined_at_pipeline_level)
 
-  - pwsh: git status
+jobs:
+  - job: job1
+    displayName: UI level specified branch
+    steps:
+      - checkout: dynamic-repository-ui-level
+
+      - pwsh: git status
+
+  - job: job2
+    displayName: Pipeline level specified branch
+    steps:
+      - checkout: dynamic-repository-pipeline-level
+
+      - pwsh: git status
