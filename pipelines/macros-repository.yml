@@ -1,0 +1,14 @@
+trigger: none
+
+pr: none
+
+resources:
+  repositories:
+    - repository: dynamic-repository
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: $(dynamicBranch)
+
+steps:
+  - pwsh: git status

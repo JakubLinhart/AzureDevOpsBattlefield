@@ -16,7 +16,7 @@ variables:
   - name: var_with_value_for_another_value
     value: 'this comes from a macro'
   - name: var_with_macro_with_variable_defined_at_job_level_in_value_at_pipeline_level
-    value: 'this part was defined at pipliene level, $(var_with_value_for_another_value_on_job_level)'
+    value: 'this part was defined at pipeline level, $(var_with_value_for_another_value_on_job_level)'
   - name: var_with_macro_in_value_at_pipeline_level
     value: '$(var_with_value_for_another_value)'
   - name: variable_name_fragment
