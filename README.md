@@ -19,7 +19,6 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [Nested evaluation is NOT supported.](macros.md#nested-expansion-is-supported)
 - [Variables referenced by macros can be defined using runtime expressions.](macros.md#variables-referenced-by-macros-can-be-defined-using-runtime-expressions)
 - [An undefined variable preserve macro syntax.](macros.md#undefined-variables-preserve-macro-syntax)
-- [Macros can be used to define repository branch.](macros.md#macros-can-be-used-to-define-repository-branch)
 
 ## Runtime expressions
 
@@ -53,3 +52,9 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [Template expressions cannot be used for parameter defaults.](template-parameters.md#template-expressions-cannot-be-used-for-parameter-defaults)
 - [Runtime expressions cannot reference parameters.](template-parameters.md#runtime-expressions-cannot-reference-parameters)
 - [A template expression can specify a template name.](template-parameters.md#a-template-expression-can-specify-a-template-name)
+
+## Repositories
+
+- [A repository resource branch can be defined by a macro.](repositories.md#a-repository-resource-branch-defined-by-macro-gets-refsheads-prefix)
+- [A repository resource branch cannot be defined by a macro with job-level variable.](repositories.md#a-repository-resource-branch-cannot-be-defined-by-a-macro-with-job-level-variable)
+- [A repository resource branch defined by macro gets `refs/heads/` prefix.](repositories.md#a-repository-resource-branch-defined-by-macro-gets-refsheads-prefix)
