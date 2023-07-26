@@ -1,6 +1,10 @@
-trigger: none
-
-pr: none
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/repository-macros.yml
 
 variables:
   - name: var_defined_at_pipeline_level
