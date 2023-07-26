@@ -54,6 +54,20 @@ produces this output:
 
 [![ui defined template expression evaluation output](images/template-expressions-ui-level-variables-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=262&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=19)
 
+## Workaround for UI-defined variables in template expressions
+
+To workaround the unavailability of UI-defined variables for template expressions, you can define a new variable at the pipeline level using a macro that references a UI-defined variable. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/8be879741f688270d2eddf1837b2893f7b204675/pipelines/template-expressions.yml#L10-L11):
+
+```yaml
+variables:
+  - name: var_defined_from_another_ui_level_var
+    value: $(var_defined_at_ui_level)
+```
+
+gives you this:
+
+[![unavailability of UI-defined variables for template expressions](images/template-expressions-ui-level-variables-workaround-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=368&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=23)
+
 ## The order of variable definitions is important
 
 Consider this [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/fc5fe379579f4d57d2480141c362f6e8dfdf487b/pipelines/template-expressions.yml#L10-L15):
