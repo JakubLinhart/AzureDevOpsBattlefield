@@ -55,6 +55,6 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 ## Repositories
 
-- [A repository resource branch can be defined by a macro.](repositories.md#a-repository-resource-branch-defined-by-macro-gets-refsheads-prefix)
+- [A repository resource branch can be defined by a macro.](repositories.md#a-repository-resource-branch-can-be-defined-by-a-macro)
 - [A repository resource branch cannot be defined by a macro with job-level variable.](repositories.md#a-repository-resource-branch-cannot-be-defined-by-a-macro-with-job-level-variable)
 - [A repository resource branch defined by macro gets `refs/heads/` prefix.](repositories.md#a-repository-resource-branch-defined-by-macro-gets-refsheads-prefix)
