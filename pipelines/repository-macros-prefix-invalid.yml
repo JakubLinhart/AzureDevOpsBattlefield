@@ -6,11 +6,12 @@ variables:
     value: refs/heads/dynamicBranch
 
 resources:
-  - repository: dynamic-repository-pipeline-level
-    type: github
-    endpoint: JakubLinhart
-    name: JakubLinhart/AzureDevOpsBattlefield
-    ref: $(var_defined_at_pipeline_level)
+  repositories:
+    - repository: dynamic-repository-pipeline-level
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: $(var_defined_at_pipeline_level)
 
 steps:
   - checkout: dynamic-repository-pipeline-level
