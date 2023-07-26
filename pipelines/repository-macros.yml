@@ -40,5 +40,5 @@ jobs:
       - checkout: dynamic-repository-pipeline-level
 
       - pwsh: |
-          echo 'A variable defined at UI level contains ''$(var_defined_at_pipeline_level)'' but is evaluated to a specific commit hash, so the result of a GIT checkout is a repository with a detached head.'
+          echo 'A variable defined at pipeline level contains ''$(var_defined_at_pipeline_level)'' but is evaluated to a specific commit hash, so the result of a GIT checkout is a repository with a detached head.'
           git status
