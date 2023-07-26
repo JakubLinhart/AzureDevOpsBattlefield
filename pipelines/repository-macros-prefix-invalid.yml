@@ -1,0 +1,19 @@
+trigger: none
+pr: none
+
+variables:
+  - name: var_defined_at_pipeline_level
+    value: refs/heads/dynamicBranch
+
+resources:
+    - repository: dynamic-repository-pipeline-level
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: $(var_defined_at_pipeline_level)
+
+steps:
+  - checkout: dynamic-repository-pipeline-level
+
+  - pwsh: |
+      echo 'This is irrelevant - it never happens.'
