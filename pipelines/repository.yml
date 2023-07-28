@@ -6,8 +6,15 @@ trigger:
     include:
       - pipelines/repository.yml
 
+resources:
+  repositories:
+    - repository: repository
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+
 jobs:
   - job: job1
     displayName: Hardcoded checkout
     steps:
-      - checkout: git://linj/AzureDevOpsBattlefield@dynamicBranch
+      - checkout: repository@dynamicBranch
