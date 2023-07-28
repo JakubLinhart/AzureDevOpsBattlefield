@@ -12,7 +12,7 @@ resources:
       type: github
       endpoint: JakubLinhart
       name: JakubLinhart/AzureDevOpsBattlefield
-      ref: %^$^#$%^
+      ref: refs/heads/thisBranchIsntThere
 
 jobs:
   - job: job1
