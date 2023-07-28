@@ -69,7 +69,7 @@ This is well documented in official [Azure DevOps documentation](https://learn.m
 
 ## A repository resource cannot be combined with inline checkout
 
-An attempt to combine a repository resource with inline checkout syntax:
+An attempt to combine a repository resource with [inline checkout syntax](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5d3efca7cb77bcf1a4548e3ff68634d965b803d8/pipelines/repository-resource-with-inline-syntax-invalid.yml#L9-L20):
 
 ```yaml
 resources:
