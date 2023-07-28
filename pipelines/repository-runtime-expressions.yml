@@ -1,0 +1,21 @@
+trigger: none
+pr: none
+
+variables:
+  - name: var_defined_at_pipeline_level
+    value: dynamicBranch
+
+resources:
+  repositories:
+    - repository: dynamic-repository
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: $[variables.var_defined_at_job_level]
+
+jobs:
+  - job: job1
+    displayName: Job level specified branch
+
+    steps:
+      - checkout: dynamic-repository
