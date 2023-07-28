@@ -10,4 +10,4 @@ jobs:
   - job: job1
     displayName: Hardcoded checkout
     steps:
-      - checkout: git://JakubLinhart/AzureDevOpsBattlefield@dynamicBranch
+      - checkout: git://linj/AzureDevOpsBattlefield@dynamicBranch
