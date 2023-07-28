@@ -50,6 +50,31 @@ leads to:
 
 [![default branch prefix](images/repository-macros-prefix-error.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=362&view=results)
 
+## A repository resource branch cannot be defined by a runtime expression
+
+If you try to define a repository resource branch by a [runtime expression](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5ff61b5bf495469f3d70d4164bb89bc4ab55661e/pipelines/repository-runtime-expressions-invalid.yml#L14):
+
+```yaml
+variables:
+  - name: var_defined_at_pipeline_level
+    value: dynamicBranch
+
+resources:
+  repositories:
+    - repository: dynamic-repository
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: $[variables.var_defined_at_pipeline_level]
+
+steps:
+  - checkout: dynamic-repository
+```
+
+you get this error when you try to run such a pipeline:
+
+[![error when you try to define a repository resource branch by a runtime expression](images/repository-runtime-expression-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=388&view=results)
+
 ## Inline checkout syntax cannot be used for GitHub
 
 Consider this [inline checkout](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/31c6ae47742579e7242cb68cdfa082b41c2dece1/pipelines/repository-inline-syntax-with-github-invalid.yml#L13):
