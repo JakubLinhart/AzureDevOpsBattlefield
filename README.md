@@ -59,5 +59,7 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [A repository resource branch cannot be defined by a macro with job-level variable.](repositories.md#a-repository-resource-branch-cannot-be-defined-by-a-macro-with-job-level-variable)
 - [A repository resource branch defined by macro gets `refs/heads/` prefix.](repositories.md#a-repository-resource-branch-defined-by-macro-gets-refsheads-prefix)
 - [A repository resource branch cannot be defined by a runtime expression.](repositories.md#a-repository-resource-branch-cannot-be-defined-by-a-runtime-expression)
+- [A repository resource branch cannot be defined by a template expression.](repositories.md#a-repository-resource-branch-cannot-be-defined-by-a-template-expression)
+- [Invalid repository resource branch leads to an error.](repositories.md#invalid-repository-resource-branch-leads-to-an-error)
 - [Inline checkout syntax cannot be used for GitHub.](repositories.md#inline-checkout-syntax-cannot-be-used-for-github)
 - [A repository resource cannot be combined with inline checkout.](repositories.md#a-repository-resource-cannot-be-combined-with-inline-checkout)

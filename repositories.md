@@ -99,7 +99,7 @@ then there is no error when you try to start such a pipeline but the repository 
 
 This is a clue that repositories are parsed even before templates expressions evaluation.
 
-## Azure DevOps ignores repository resources with invalid branch
+## Invalid repository resource branch leads to an error
 
 Consider this [repository resource with a branch that doesn't exist](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/44db226d9b220497ebd7725b39293a33f97aa70e/pipelines/repository-invalid-branch-invalid.yml#L9-L21):
 
