@@ -49,3 +49,43 @@ resources:
 leads to:
 
 [![default branch prefix](images/repository-macros-prefix-error.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=362&view=results)
+
+## Inline checkout syntax cannot be used for GitHub
+
+Consider this [inline checkout](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/31c6ae47742579e7242cb68cdfa082b41c2dece1/pipelines/repository-inline-syntax-with-github-invalid.yml#L13):
+
+```yaml
+steps:
+  - checkout: git://JakubLinhart/AzureDevOpsBattlefield@dynamicBranch
+```
+
+then an attempt to run such a pipeline results in an error:
+
+[![inline checkout syntax error](images/repository-inline-syntax-with-github-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=379&view=results)
+
+This is well documented in official [Azure DevOps documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/repos/multi-repo-checkout?view=azure-devops#inline-syntax-checkout).
+
+> Only Azure Repos Git repositories in the same organization can use the inline syntax. Azure Repos Git repositories in a different organization, and other supported repository types require a service connection and must be declared as a repository resource.
+
+## A repository resource cannot be combined with inline checkout
+
+An attempt to combine a repository resource with inline checkout syntax:
+
+```yaml
+resources:
+  repositories:
+    - repository: repository
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+
+jobs:
+  - job: job1
+    displayName: Inline syntax combined with repository resource
+    steps:
+      - checkout: repository@refs/heads/dynamicBranch
+```
+
+If you try to start such a pipeline, you will get this error:
+
+![repository resource combined with inline checkout syntax](images/repository-resource-with-inline-syntax-error.png)
