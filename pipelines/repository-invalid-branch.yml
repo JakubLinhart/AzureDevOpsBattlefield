@@ -1,0 +1,25 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/repository-template-expressions.yml
+
+resources:
+  repositories:
+    - repository: repository-with-invalid-branch
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: refs/heads/thisBranchIsntThere
+
+jobs:
+  - job: job1
+    displayName: Checkout irrelevant branch
+    steps:
+      - checkout: repository-with-invalid-branch
+
+      - pwsh: |
+          echo 'Trying to checkout a branch that doesn''t exist.'
+          git status
