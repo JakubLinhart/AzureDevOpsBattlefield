@@ -1,0 +1,13 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/repository.yml
+
+jobs:
+  - job: job1
+    displayName: Hardcoded checkout
+    steps:
+      - checkout: git://JakubLinhart/AzureDevOpsBattlefield@dynamicBranch
