@@ -15,6 +15,11 @@ resources:
 
 jobs:
   - job: job1
-    displayName: Hardcoded checkout
+    displayName: Hardcoded Github checkout
+    steps:
+      - checkout: git://JakubLinhart/AzureDevOpsBattlefield@dynamicBranch
+
+  - job: job2
+    displayName: Inline syntax combined with repository resource
     steps:
       - checkout: repository@dynamicBranch
