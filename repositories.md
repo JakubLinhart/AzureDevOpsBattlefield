@@ -75,6 +75,32 @@ you get this error when you try to run such a pipeline:
 
 [![error when you try to define a repository resource branch by a runtime expression](images/repository-runtime-expression-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=388&view=results)
 
+## A repository resource branch cannot be defined by a template expression
+
+Consider a repository resource branch defined by [a template expression](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/36ef8208c11b9353b6091f1b2445d8bfe16a766c/pipelines/repository-template-expressions.yml#L9-L19):
+
+```yaml
+variables:
+  - name: var_defined_at_pipeline_level
+    value: refs/heads/dynamicBranch
+
+resources:
+  repositories:
+    - repository: dynamic-repository-pipeline-level
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: ${{ variables.var_defined_at_pipeline_level }}
+```
+
+then there is no error when you try to start such a pipeline but the repository branch is evaluated as an unknown and the repository resource is ignored completely:
+
+[![ignored repository resource with a branch defined by a template expression](images/repository-template-expression-missing-resource.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=398&view=results)
+
+This is a clue that repositories are parsed even before templates expressions evaluation.
+
+## Azure DevOps ignores repository resources with invalid branch
+
 ## Inline checkout syntax cannot be used for GitHub
 
 Consider this [inline checkout](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/31c6ae47742579e7242cb68cdfa082b41c2dece1/pipelines/repository-inline-syntax-with-github-invalid.yml#L13):
