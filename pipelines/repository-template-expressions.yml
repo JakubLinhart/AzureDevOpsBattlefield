@@ -16,7 +16,7 @@ resources:
       type: github
       endpoint: JakubLinhart
       name: JakubLinhart/AzureDevOpsBattlefield
-      ref: refs/heads/dynamicBranch
+      ref: ${{ variables.var_defined_at_pipeline_level }}
 
 jobs:
   - job: job1
