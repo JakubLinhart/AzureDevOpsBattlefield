@@ -1,0 +1,13 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/repository-inline-syntax-with-github.yml
+
+jobs:
+  - job: job1
+    displayName: Hardcoded Github checkout
+    steps:
+      - checkout: git://JakubLinhart/AzureDevOpsBattlefield@dynamicBranch

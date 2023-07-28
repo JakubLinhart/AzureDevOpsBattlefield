@@ -4,7 +4,7 @@ trigger:
     - main
   paths:
     include:
-      - pipelines/repository.yml
+      - pipelines/repository-resource-with-inline-syntax.yml
 
 resources:
   repositories:
@@ -15,11 +15,6 @@ resources:
 
 jobs:
   - job: job1
-    displayName: Hardcoded Github checkout
-    steps:
-      - checkout: git://JakubLinhart/AzureDevOpsBattlefield@dynamicBranch
-
-  - job: job2
     displayName: Inline syntax combined with repository resource
     steps:
-      - checkout: repository@dynamicBranch
+      - checkout: repository@refs/heads/dynamicBranch
