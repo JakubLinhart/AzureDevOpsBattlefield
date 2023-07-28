@@ -1,0 +1,29 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/repository-macros.yml
+
+variables:
+  - name: var_defined_at_pipeline_level
+    value: dynamicBranch
+
+resources:
+  repositories:
+    - repository: dynamic-repository-pipeline-level
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: ${{ variables.var_defined_at_pipeline_level }}
+
+jobs:
+  - job: job1
+    displayName: Pipeline level specified branch
+    steps:
+      - checkout: dynamic-repository-pipeline-level
+
+      - pwsh: |
+          echo 'A variable defined at pipeline level contains ''${{ variables.var_defined_at_pipeline_level }}'' but is evaluated to a specific commit hash, so the result of a GIT checkout is a repository with a detached head.'
+          git status
