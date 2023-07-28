@@ -93,13 +93,32 @@ resources:
       ref: ${{ variables.var_defined_at_pipeline_level }}
 ```
 
-then there is no error when you try to start such a pipeline but the repository branch is evaluated as an unknown and the repository resource is ignored completely:
+then there is no error when you try to start such a pipeline but the repository branch is evaluated as an unknown and the repository resource is ignored completely and a default branch is used:
 
 [![ignored repository resource with a branch defined by a template expression](images/repository-template-expression-missing-resource.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=398&view=results)
 
 This is a clue that repositories are parsed even before templates expressions evaluation.
 
 ## Azure DevOps ignores repository resources with invalid branch
+
+Consider this [repository resource with a branch that doesn't exist](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/44db226d9b220497ebd7725b39293a33f97aa70e/pipelines/repository-invalid-branch-invalid.yml#L9-L21):
+
+```yaml
+resources:
+  repositories:
+    - repository: repository-with-invalid-branch
+      type: github
+      endpoint: JakubLinhart
+      name: JakubLinhart/AzureDevOpsBattlefield
+      ref: refs/heads/thisBranchIsntThere
+
+steps:
+  - checkout: repository-with-invalid-branch
+```
+
+If you try to start such a pipeline you get this error:
+
+[![repository resource invalid branch](images/repository-invalid-branch-error.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=402&view=results)
 
 ## Inline checkout syntax cannot be used for GitHub
 
