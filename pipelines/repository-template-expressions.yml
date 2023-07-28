@@ -4,11 +4,11 @@ trigger:
     - main
   paths:
     include:
-      - pipelines/repository-macros.yml
+      - pipelines/repository-template-expressions.yml
 
 variables:
   - name: var_defined_at_pipeline_level
-    value: dynamicBranch
+    value: refs/heads/dynamicBranch
 
 resources:
   repositories:
