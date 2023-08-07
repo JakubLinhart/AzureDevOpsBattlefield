@@ -137,7 +137,7 @@ This is well documented in official [Azure DevOps documentation](https://learn.m
 
 > Only Azure Repos Git repositories in the same organization can use the inline syntax. Azure Repos Git repositories in a different organization, and other supported repository types require a service connection and must be declared as a repository resource.
 
-## A repository resource cannot be combined with inline checkout
+## A repository resource cannot be combined with inline checkout syntax
 
 An attempt to combine a repository resource with [inline checkout syntax](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5d3efca7cb77bcf1a4548e3ff68634d965b803d8/pipelines/repository-resource-with-inline-syntax-invalid.yml#L9-L20):
 

@@ -62,4 +62,4 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [A repository resource branch cannot be defined by a template expression.](repositories.md#a-repository-resource-branch-cannot-be-defined-by-a-template-expression)
 - [Invalid repository resource branch leads to an error.](repositories.md#invalid-repository-resource-branch-leads-to-an-error)
 - [Inline checkout syntax cannot be used for GitHub.](repositories.md#inline-checkout-syntax-cannot-be-used-for-github)
-- [A repository resource cannot be combined with inline checkout.](repositories.md#a-repository-resource-cannot-be-combined-with-inline-checkout)
+- [A repository resource cannot be combined with inline checkout syntax.](repositories.md#a-repository-resource-cannot-be-combined-with-inline-checkout-syntax)
