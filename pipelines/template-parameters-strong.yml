@@ -13,8 +13,6 @@ steps:
       Write-Output 'Parameter value specified as template argument.'
       Write-Output '    parameters.parameter1: ''${{ parameters.parameter1 }}'''
 
-      Write-Output '    parameters.undefinedParameter: ''${{ parameters.undefinedParameter }}'''
-
       Write-Output ''
       Write-Output 'Unspecified parameter, default value is used.'
       Write-Output '    parameters.parameter_with_default_value: ''${{ parameters.parameter_with_default_value }}'''
