@@ -75,7 +75,7 @@ And the output is:
 
 [![parameter not defined in the template](images/template-parameters-not-defined-in-template-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=315&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=16)
 
-## Undefined parameters are evaluated as empty string in weakly typed templates
+## Undefined parameters are evaluated as empty strings in weakly typed templates
 
 Consider this weakly typed template:
 
@@ -94,6 +94,10 @@ Consider this weakly typed template:
 When you don't specify `undefined_parameter` for the template, then it remains undefined and is evaluated as an empty string:
 
 [![undefined parameter evaluated as an empty string](images/template-parameters-weak-undefined-parameter-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=315&view=logs&j=639dafd1-9d08-5ba3-6aa9-ec5498121476&t=24face41-f372-5a6c-3571-dd84dc13970b&l=18)
+
+## Undefined parameters cannot be used in strongly typed templates
+
+TBD
 
 ## Template expressions cannot be used for parameter defaults
 
