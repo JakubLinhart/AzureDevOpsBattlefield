@@ -19,6 +19,7 @@ steps:
   - checkout: none
 
   - pwsh: | 
-      Write-Output "template expression: ${{ parameters.parameter1 }}"
+      Write-Output 'template expression: ${{ parameters.parameter1 }}''
+      Write-Output 'template expression with undefined pipeline parameter: ''${{ parameters.undefinedPipelineParameter }}'''
       Write-Output 'macro: $(parameter1)'
     displayName: 'Parameter: ${{ parameters.parameter1 }}'
