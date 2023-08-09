@@ -15,6 +15,14 @@ parameters:
       - value2
       - value3
 
+variables:
+  variableForParameter1: $[[ parameters.parameter1 ]]
+
 steps:
-  - pwsh: echo ${{ parameters.parameter1 }}
+  - checkout: none
+
+  - pwsh: | 
+      Write-Output "template expression: ${{ parameters.parameter1 }}"
+      Write-Output "macro: $(parameter1)"
+      Write-Output "runtime expression defined variable: "
     displayName: 'Parameter: ${{ parameters.parameter1 }}'
