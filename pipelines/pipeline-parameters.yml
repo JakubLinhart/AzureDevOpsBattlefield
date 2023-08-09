@@ -20,5 +20,5 @@ steps:
 
   - pwsh: | 
       Write-Output "template expression: ${{ parameters.parameter1 }}"
-      Write-Output "macro: $(parameter1)"
+      Write-Output 'macro: $(parameter1)'
     displayName: 'Parameter: ${{ parameters.parameter1 }}'
