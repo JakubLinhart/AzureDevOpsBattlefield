@@ -16,7 +16,8 @@ parameters:
       - value3
 
 variables:
-  variableForParameter1: $[[ parameters.parameter1 ]]
+  - name: variableForParameter1
+    value: $[[ parameters.parameter1 ]]
 
 steps:
   - checkout: none
