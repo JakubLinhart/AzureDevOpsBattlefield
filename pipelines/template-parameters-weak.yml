@@ -15,8 +15,6 @@ jobs:
 
           Write-Output 'Parameter not defined in the template, but its value is specified as a template argument.'
           Write-Output '    parameters.parameter_not_defined_in_template: ''${{ parameters.parameter_not_defined_in_template }}'''
-    
-          Write-Output '    parameters.undefinedParameter: ''${{ parameters.undefinedParameter }}'''
 
           Write-Output ''
           Write-Output 'Undefined parameter is expanded to an empty string.'
