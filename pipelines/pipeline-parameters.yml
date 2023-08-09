@@ -1,0 +1,20 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/pipeline-parameters.yml
+
+parameters:
+  - name: parameter1
+    type: string
+    default: value1
+    values:
+      - value1
+      - value2
+      - value3
+
+steps:
+  - pwsh: echo ${{ parameters.parameter1 }}
+    displayName: 'Parameter: ${{ parameters.parameter1 }}'
