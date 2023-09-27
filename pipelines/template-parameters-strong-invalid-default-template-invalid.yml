@@ -1,9 +1,7 @@
 parameters:
   - name: parameter_with_invalid_default
     type: boolean
-    default: ${{ variables.some_variable }}
+    default: $(some_variable)
 
 steps:
   - checkout: none
-
-  - pwsh: echo ${{ parameters.parameter_with_invalid_default }}
