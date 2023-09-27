@@ -91,7 +91,7 @@ stages:
             displayName: 'Variable group name-${{ variables.var_defined_at_variable_group_level }}'
 
           - pwsh: |
-              Write-Output 'This step shows that the workaround for variable group-defined variables works for properties.''
+              Write-Output 'This step shows that the workaround for variable group-defined variables works for properties.'
               Write-Output 'If there is anything after dash in the display name of this step then the workaround works.'
             displayName: 'Variable group name (workaround)-${{ variables.var_defined_from_another_variable_group_level_var }}'
 
