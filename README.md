@@ -37,6 +37,8 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 - [Usable on the left side of a key.](template-expressions.md#usable-on-the-left-side-of-a-key)
 - [An undefined variable is evaluated as an empty string.](template-expressions.md#an-undefined-variable-is-evaluated-as-an-empty-string)
+- [Variable group-defined variables are unavailable in template expressions.](template-expressions.md#variable-group-defined-variables-are-unavailable-in-template-expressions)
+- [Workaround for variable group-defined variables in template expressions.](template-expressions.md#workaround-for-variable-group-defined-variables-in-template-expressions)
 - [UI-defined variables are unavailable in template expressions.](template-expressions.md#ui-defined-variables-are-unavailable-in-template-expressions)
 - [Workaround for UI-defined variables in template expressions.](template-expressions.md#workaround-for-ui-defined-variables-in-template-expressions)
 - [The order of variable definitions is important.](template-expressions.md#the-order-of-variable-definitions-is-important)
