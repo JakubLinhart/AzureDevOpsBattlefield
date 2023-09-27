@@ -53,6 +53,7 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [Undefined parameters are evaluated as empty strings in weakly typed templates.](template-parameters.md#undefined-parameters-are-evaluated-as-empty-strings-in-weakly-typed-templates)
 - [Undefined parameters cannot be used in strongly typed templates.](template-parameters.md#undefined-parameters-cannot-be-used-in-strongly-typed-templates)
 - [Template expressions cannot be used for parameter defaults.](template-parameters.md#template-expressions-cannot-be-used-for-parameter-defaults)
+- [Default value must be valid in strongly typed templates.](template-parameters.md#default-value-must-be-valid-in-strongly-typed-templates)
 - [Runtime expressions cannot reference parameters.](template-parameters.md#runtime-expressions-cannot-reference-parameters)
 - [A template expression can specify a template name.](template-parameters.md#a-template-expression-can-specify-a-template-name)
 

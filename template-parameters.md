@@ -119,6 +119,21 @@ If you try to start a pipeline using such a template, you will get this error:
 
 The same limitation applies to weakly typed [templates](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/main/pipelines/template-parameters-weak-default-with-expression-invalid-template.yml) and the related [pipeline](https://dev.azure.com/linj/AzureDevOpsBattleground/_build?definitionId=20&_a=summary).
 
+## Default value must be valid in strongly typed templates
+
+If you specify an [invalid default value](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/5af8c3b0ee84d8c2a1de858df43dcb13edaa4d06/pipelines/template-parameters-strong-invalid-default-template-invalid.yml#L1C1-L4C35) for a strongly typed template parameter:
+
+```yaml
+  parameters:
+    - name: parameter_with_invalid_default
+      type: boolean
+      default: invalid boolean value
+```
+
+You get a validation error when you try to start the [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build?definitionId=38&_a=summary):
+
+![invalid default value error](images/template-parameters-strong-invalid-default-invalid-error.png)
+
 ## Runtime expressions cannot reference parameters
 
 Consider this weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/55beb685f924d546a0cb58130dfea3d000e35c29/pipelines/template-parameters-weak-runtime-expression-with-parameter-invalid-template.yml) using a parameter in a runtime expression:
