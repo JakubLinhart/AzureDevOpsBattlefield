@@ -7,6 +7,7 @@ trigger:
       - pipelines/template-expressions.yml
 
 variables:
+  - group: template-expressions-variables
   - name: var_defined_from_another_ui_level_var
     value: $(var_defined_at_ui_level)
 
@@ -47,6 +48,10 @@ stages:
               Write-Output 'Variable value containing template expression. The referenced variable is put into "",'
               Write-Output 'but is defined after using it, so it is evaluated to an empty string.'
               Write-Output '    variables.var_using_variable_not_defined_yet: ''${{ variables.var_using_variable_not_defined_yet }}'''
+
+              Write-Output ''
+              Write-Output 'Variable group variables.'
+              Write-Output '    variables.template-expressions-group-var1: ${{ variables.template-expressions-group-var1 }}'
 
               Write-Output ''
               Write-Output 'Template expressions are evaluated before UI variables are defined, so it is not possible to use them in template expressions.'
