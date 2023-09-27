@@ -55,7 +55,7 @@ produces this output:
 
 ## Workaround for variable group-defined variables in template expressions
 
-To workaround the unavailability of variable group-defined variables for template expressions, you can define a new variable at the pipeline level using a macro that references a variable group-defined variable. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/f2ba44cd745f4be313da7c487a057ac3a22e986a/pipelines/template-expressions.yml#L11-L12):
+To workaround the unavailability of [variable group](https://dev.azure.com/linj/AzureDevOpsBattleground/_library?itemType=VariableGroups&view=VariableGroupView&variableGroupId=3&path=variable-group)-defined variables for template expressions, you can define a new variable at the pipeline level using a macro that references a variable group-defined variable. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/f2ba44cd745f4be313da7c487a057ac3a22e986a/pipelines/template-expressions.yml#L11-L12):
 
 ```yaml
 variables:
@@ -66,6 +66,7 @@ variables:
 gives you this:
 [![unavailability of variable group-defined variables for template expressions](images/template-expressions-variable-group-level-variables-workaround-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=447&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=23)
 
+This workaround works in contexts where macros are not allowed. For example it works for [`displayName`](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/0ba1ffd646094a6b2474c5ff2bbf5985fdc76ff5/pipelines/template-expressions.yml#L88-L96) (see [run](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=484&view=results).
 
 ## UI-defined variables are unavailable in template expressions
 
