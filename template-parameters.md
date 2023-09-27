@@ -134,6 +134,29 @@ You get a validation error when you try to start the [pipeline](https://linj.vis
 
 ![invalid default value error](images/template-parameters-strong-invalid-default-invalid-error.png)
 
+## Macro can be used as a default value for string parameters in strongly typed templates
+
+You can put a [macro into a default value](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/6f571b66cd01b395e5bfce551a471b01856aabff/pipelines/template-parameters-strong.yml#L8C1-L10C73):
+
+```yaml
+parameters:
+  - name: string_parameter_with_macro_in_default_value
+    type: string
+    default: $(default_for_string_parameter_with_macro_in_default_value)
+```
+
+This doesn't mean that the default value is defined by the macro, it means that the template expression is expanded as the macro first:
+
+```yaml
+      Write-Output '    parameters.parameter_with_default_value: '$(default_for_string_parameter_with_macro_in_default_value)'''
+```
+
+and the macro `$(default_for_string_parameter_with_macro_in_default_value)` is expanded afterwards at runtime.
+
+The output is:
+
+[![output of strongly typed template with a macro in a default parameter value](images/template-parameters-strong-macro-in-default-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=466&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=aea10b75-600d-5f48-c6bd-c7e57f978ade&l=19)
+
 ## Runtime expressions cannot reference parameters
 
 Consider this weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/55beb685f924d546a0cb58130dfea3d000e35c29/pipelines/template-parameters-weak-runtime-expression-with-parameter-invalid-template.yml) using a parameter in a runtime expression:
