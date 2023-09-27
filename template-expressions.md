@@ -53,6 +53,20 @@ then for [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/f
 produces this output:
 [![variable group defined variable in template expression evaluation output](images/template-expressions-variable-group-level-variables-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=447&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=20)
 
+## Workaround for variable group-defined variables in template expressions
+
+To workaround the unavailability of variable group-defined variables for template expressions, you can define a new variable at the pipeline level using a macro that references a variable group-defined variable. For [example](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/f2ba44cd745f4be313da7c487a057ac3a22e986a/pipelines/template-expressions.yml#L11-L12):
+
+```yaml
+variables:
+  - name: var_defined_from_another_variable_group_level_var
+    value: $(var_defined_at_variable_group_level)
+```
+
+gives you this:
+[![unavailability of variable group-defined variables for template expressions](images/template-expressions-variable-group-level-variables-workaround-output.png)](https://dev.azure.com/linj/AzureDevOpsBattleground/_build/results?buildId=447&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=5e8f27c5-64d0-5083-9c85-d2ff9773c863&l=23)
+
+
 ## UI-defined variables are unavailable in template expressions
 
 In Azure DevOps, template expressions are evaluated before the variables defined at the UI level are included. However, UI-defined variables are accessible for both [runtime expressions](/#runtime-expressions) and [macros](/#macros).
