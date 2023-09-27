@@ -136,7 +136,7 @@ You get a validation error when you try to start the [pipeline](https://linj.vis
 
 ## Macro can be used as a default value for string parameters in strongly typed templates
 
-You can put a [macro into a default value](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/6f571b66cd01b395e5bfce551a471b01856aabff/pipelines/template-parameters-strong.yml#L8C1-L10C73):
+You can put a [macro into a default value](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/6f571b66cd01b395e5bfce551a471b01856aabff/pipelines/template-parameters-strong.yml#L8C1-L10C73) of a string parameter:
 
 ```yaml
 parameters:
@@ -159,7 +159,20 @@ The output is:
 
 ## Macro cannot be used as a default value for other than string parameters in strongly typed templates
 
+You cannot put a [macro into a default value](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/f5f3bdbb25959a9a47a337eb329366ed572143ec/pipelines/template-parameters-strong-bool-default-macro-template-invalid.yml#L2-L4) of a boolean parameter:
 
+```yaml
+  parameters:
+    - name: parameter_with_invalid_default
+      type: boolean
+      default: $(default_for_bool_parameter_with_macro_in_default_value)
+```
+
+If you try to run a [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build?definitionId=39&_a=summary) with such a template, you get a validation error:
+
+![template with a macro in a default value of boolean parameter](images/template-parameters-strong-bool-default-macro-error.png)
+
+How is it possible that macros in the default values of string parameters are valid, but invalid for boolean parameters? This is because macros are expanded much later, after a template is processed. So, when a template is being processed (at compile time), Azure DevOps still sees the default value with a macro that has not yet been expanded. Such a macro is obviously an invalid boolean value.
 
 ## Runtime expressions cannot reference parameters
 
