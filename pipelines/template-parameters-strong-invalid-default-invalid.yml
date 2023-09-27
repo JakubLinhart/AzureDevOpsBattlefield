@@ -1,0 +1,10 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/template-parameters-strong-invalid-default*.yml
+
+steps:
+  - template: template-parameters-strong-invalid-default-template-invalid.yml
