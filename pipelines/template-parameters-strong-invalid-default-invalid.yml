@@ -6,9 +6,5 @@ trigger:
     include:
       - pipelines/template-parameters-strong-invalid-default*.yml
 
-variables:
-  - name: some_variable
-    value: true
-
 steps:
   - template: template-parameters-strong-invalid-default-template-invalid.yml
