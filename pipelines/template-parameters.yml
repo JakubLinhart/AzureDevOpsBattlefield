@@ -9,6 +9,8 @@ trigger:
 variables:
   - name: var_template_name
     value: template-parameters-weak.yml
+  - name: default_for_string_parameter_with_macro_in_default_value
+    value: 'this is a default value defined by a macro'
 
 stages:
   - stage: stage1

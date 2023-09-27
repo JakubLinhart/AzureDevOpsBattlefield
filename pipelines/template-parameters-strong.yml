@@ -5,6 +5,9 @@ parameters:
   - name: parameter_with_default_value
     type: string
     default: 'parameter_with_default_value default value'
+  - name: string_parameter_with_macro_in_default_value
+    type: string
+    default: $(default_for_string_parameter_with_macro_in_default_value)
   - name: parameter_without_default_value
     type: string
 
@@ -16,5 +19,9 @@ steps:
       Write-Output ''
       Write-Output 'Unspecified parameter, default value is used.'
       Write-Output '    parameters.parameter_with_default_value: ''${{ parameters.parameter_with_default_value }}'''
+
+      Write-Output ''
+      Write-Output 'Unspecified parameter, default value defined by a macro is used.'
+      Write-Output '    parameters.string_parameter_with_macro_in_default_value: ''${{ parameters.string_parameter_with_macro_in_default_value }}'''
 
     displayName: 'Check strongly typed parameters'
