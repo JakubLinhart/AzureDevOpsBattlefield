@@ -8,6 +8,8 @@ trigger:
 
 variables:
   - group: variable-group
+  - name: var_defined_from_another_variable_group_level_var
+    value: $(template_expressions_group_var1)
   - name: var_defined_from_another_ui_level_var
     value: $(var_defined_at_ui_level)
 
@@ -50,9 +52,12 @@ stages:
               Write-Output '    variables.var_using_variable_not_defined_yet: ''${{ variables.var_using_variable_not_defined_yet }}'''
 
               Write-Output ''
-              Write-Output 'Variable group variables.'
+              Write-Output 'Variable group variables are evaluated before variable groups are imported, so it is not possible to use them in template expressions directly.'
               Write-Output '    variables.template-expressions-group-var1: ${{ variables.template_expressions_group_var1 }}'
-              Write-Output '    variables.template-expressions-group-var1: $(template_expressions_group_var1)'
+
+              Write-Output ''
+              Write-Output 'Workaround for the limitation above is to define a new variable at pipeline level using value of variable group variable.'
+              Write-Output '    variables.var_defined_from_another_variable_group_level_var: ${{ variables.var_defined_from_another_variable_group_level_var }}'
 
               Write-Output ''
               Write-Output 'Template expressions are evaluated before UI variables are defined, so it is not possible to use them in template expressions.'
