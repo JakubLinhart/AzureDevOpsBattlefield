@@ -83,8 +83,11 @@ stages:
               Write-Output 'when the template expression wouldn''t be evaluated before the runtime expression.'
               Write-Output '    (var_with_template_in_runtime_expression): ''$(var_with_template_in_runtime_expression)'''
               Write-Output ''
-
             displayName: Runtime vs. template expressions 
+
+          - pwsh: |
+              Write-Output ''
+            displayName: Variable group name '${{ variables.var_defined_from_another_variable_group_level_var }}'
 
           - ${{ variables.var_task_name }}: Write-Output 'Hello from a task defined by template expression.'
             displayName: The task name is defined by a template expression
