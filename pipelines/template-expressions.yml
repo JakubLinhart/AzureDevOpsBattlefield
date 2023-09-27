@@ -9,7 +9,7 @@ trigger:
 variables:
   - group: variable-group
   - name: var_defined_from_another_variable_group_level_var
-    value: $(template_expressions_group_var1)
+    value: $(var_defined_at_variable_group_level)
   - name: var_defined_from_another_ui_level_var
     value: $(var_defined_at_ui_level)
 
@@ -53,7 +53,7 @@ stages:
 
               Write-Output ''
               Write-Output 'Variable group variables are evaluated before variable groups are imported, so it is not possible to use them in template expressions directly.'
-              Write-Output '    variables.template-expressions-group-var1: ${{ variables.template_expressions_group_var1 }}'
+              Write-Output '    variables.template-expressions-group-var1: ${{ variables.var_defined_at_variable_group_level }}'
 
               Write-Output ''
               Write-Output 'Workaround for the limitation above is to define a new variable at pipeline level using value of variable group variable.'
