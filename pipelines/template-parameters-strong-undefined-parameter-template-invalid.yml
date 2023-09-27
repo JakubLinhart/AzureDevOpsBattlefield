@@ -1,0 +1,9 @@
+parameters:
+  - name: parameter1
+    type: string
+    default: ''
+
+steps:
+  - checkout: none
+
+  - pwsh: echo 'Undefined parameter ${{ parameters.undefined_parameter }}'

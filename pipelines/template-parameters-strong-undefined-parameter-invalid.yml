@@ -1,0 +1,10 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/template-parameters-strong-undefined-parameter*.yml
+
+steps:
+  - template: template-parameters-strong-undefined-parameter-template-invalid.yml
