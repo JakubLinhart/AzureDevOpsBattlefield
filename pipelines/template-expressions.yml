@@ -86,8 +86,15 @@ stages:
             displayName: Runtime vs. template expressions 
 
           - pwsh: |
-              Write-Output ''
-            displayName: 'Variable group name: ${{ variables.var_defined_from_another_variable_group_level_var }}'
+              Write-Output 'The displayName of this steps shows that it is not possible to use variable group-defined variables for template expressions in properties.'
+              Write-Output 'If there is nothing after double colon in step name, then variable group-defined variables cannot be used template expression in properties.'
+            displayName: 'Variable group name: ${{ variables.var_defined_at_variable_group_level }}'
+
+          - pwsh: |
+              Write-Output 'This step shows that the workaround for variable group-defined variables works for properties. If there is anything after double colon then the workaround works.'
+            displayName: 'Variable group name (workaround): ${{ variables.var_defined_from_another_variable_group_level_var }}'
+
+var_defined_at_variable_group_level
 
           - ${{ variables.var_task_name }}: Write-Output 'Hello from a task defined by template expression.'
             displayName: The task name is defined by a template expression
