@@ -17,3 +17,7 @@ TBD
 workaround for macros and runtime expressions
 
 TBD
+
+## Pipeline parameters cannot be weakly typed
+
+TBD
