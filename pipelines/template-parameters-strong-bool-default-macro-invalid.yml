@@ -1,0 +1,14 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/template-parameters-strong-bool-default-macro*.yml
+
+variables:
+  - name: default_for_bool_parameter_with_macro_in_default_value
+    value: True
+
+steps:
+  - template: template-parameters-strong-bool-default-macro-template-invalid.yml

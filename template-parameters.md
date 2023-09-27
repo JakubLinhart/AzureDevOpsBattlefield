@@ -157,6 +157,10 @@ The output is:
 
 [![output of strongly typed template with a macro in a default parameter value](images/template-parameters-strong-macro-in-default-output.png)](https://linj.visualstudio.com/AzureDevOpsBattleground/_build/results?buildId=466&view=logs&j=0ab14b9f-e499-56d5-97b1-fd98b70ea339&t=aea10b75-600d-5f48-c6bd-c7e57f978ade&l=19)
 
+## Macro cannot be used as a default value for other than string parameters in strongly typed templates
+
+
+
 ## Runtime expressions cannot reference parameters
 
 Consider this weakly typed [template](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/55beb685f924d546a0cb58130dfea3d000e35c29/pipelines/template-parameters-weak-runtime-expression-with-parameter-invalid-template.yml) using a parameter in a runtime expression:

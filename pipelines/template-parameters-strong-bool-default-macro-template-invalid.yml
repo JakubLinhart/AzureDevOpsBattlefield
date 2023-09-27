@@ -1,0 +1,7 @@
+parameters:
+  - name: parameter_with_invalid_default
+    type: boolean
+    default: $(default_for_bool_parameter_with_macro_in_default_value)
+
+steps:
+  - checkout: none
