@@ -97,7 +97,16 @@ When you don't specify `undefined_parameter` for the template, then it remains u
 
 ## Undefined parameters cannot be used in strongly typed templates
 
-TBD
+If you try to [use an undefined parameter](https://github.com/JakubLinhart/AzureDevOpsBattlefield/blob/1179d34495bbced85ebfe6d6cfb4b471b1f30d93/pipelines/template-parameters-strong-undefined-parameter-template-invalid.yml#L9) in a strongly typed template:
+
+
+```yaml
+  - pwsh: echo 'Undefined parameter ${{ parameters.undefined_parameter }}'
+```
+
+Then if you try to start a [pipeline](https://linj.visualstudio.com/AzureDevOpsBattleground/_build?definitionId=40&_a=summary) with such a template then you get a validation error:
+
+![Alt text](images/template-parameters-strong-undefined-parameter-error.png)
 
 ## Template expressions cannot be used for parameter defaults
 
