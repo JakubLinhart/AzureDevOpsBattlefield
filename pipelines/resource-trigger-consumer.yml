@@ -1,0 +1,29 @@
+trigger: none
+pr: none
+
+resources:
+  pipelines:
+  - pipeline: source
+    source: resource-trigger-source
+    trigger:
+      stages:
+        - ResultStage
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+- job: log_trigger
+  displayName: Log trigger context
+  steps:
+  - checkout: none
+  - script: |
+      echo "=== Resource Trigger Context ==="
+      echo "Build.Reason: $(Build.Reason)"
+      echo "Source RunID: $(resources.pipeline.source.runId)"
+      echo "Source RunResult: $(resources.pipeline.source.runResult)"
+      echo "Source SourceBranch: $(resources.pipeline.source.sourceBranch)"
+      echo "Source SourceCommit: $(resources.pipeline.source.sourceCommit)"
+      echo "Source PipelineName: $(resources.pipeline.source.pipelineName)"
+      echo "Source ProjectName: $(resources.pipeline.source.projectName)"
+    displayName: 'Log trigger variables'

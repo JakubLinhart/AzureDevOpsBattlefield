@@ -70,6 +70,10 @@ It is important to note that this repository does not claim to provide exhaustiv
 - [Inline checkout syntax cannot be used for GitHub.](repositories.md#inline-checkout-syntax-cannot-be-used-for-github)
 - [A repository resource cannot be combined with inline checkout syntax.](repositories.md#a-repository-resource-cannot-be-combined-with-inline-checkout-syntax)
 
+## Resource triggers
+
+- [Resource trigger fires/does not fire for PR validation builds.](resource-triggers.md#resource-trigger-firesdoes-not-fire-for-pr-validation-builds)
+
 ## Secret variables
 
 - [Secret UI-defined variable must be mapped as environment variables to reference them in YAML pipelines.](secrets.md#secret-ui-defined-variable-must-be-mapped-as-environment-variables-to-reference-them-in-yaml-pipelines)

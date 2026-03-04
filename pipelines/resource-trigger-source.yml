@@ -1,0 +1,48 @@
+trigger:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/resource-trigger-source.yml
+
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+      - pipelines/resource-trigger-source.yml
+
+stages:
+- stage: BuildStage
+  displayName: Build
+  jobs:
+  - job: build
+    displayName: Build job
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: none
+    - script: |
+        echo "Build stage running."
+        echo "Build.Reason: $(Build.Reason)"
+        echo "Build.SourceBranch: $(Build.SourceBranch)"
+        echo "Build.SourceVersion: $(Build.SourceVersion)"
+      displayName: 'Build'
+
+- stage: ResultStage
+  displayName: Result
+  dependsOn: BuildStage
+  jobs:
+  - job: result
+    displayName: Result job
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - checkout: none
+    - script: |
+        echo "Result stage running."
+        echo "Build.Reason: $(Build.Reason)"
+        echo "Build.BuildId: $(Build.BuildId)"
+      displayName: 'Result'
