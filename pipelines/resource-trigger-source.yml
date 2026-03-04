@@ -30,7 +30,7 @@ stages:
         echo "Build.Reason: $(Build.Reason)"
         echo "Build.SourceBranch: $(Build.SourceBranch)"
         echo "Build.SourceVersion: $(Build.SourceVersion)"
-        exit 1
+        exit 1 # to test failure
       displayName: 'Build'
 
 - stage: ResultStage
