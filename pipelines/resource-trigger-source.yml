@@ -34,6 +34,7 @@ stages:
 - stage: ResultStage
   displayName: Result
   dependsOn: BuildStage
+  condition: always()
   jobs:
   - job: result
     displayName: Result job
@@ -45,4 +46,5 @@ stages:
         echo "Result stage running."
         echo "Build.Reason: $(Build.Reason)"
         echo "Build.BuildId: $(Build.BuildId)"
+        exit 1
       displayName: 'Result'
