@@ -72,7 +72,8 @@ It is important to note that this repository does not claim to provide exhaustiv
 
 ## Resource triggers
 
-- [Resource trigger fires/does not fire for PR validation builds.](resource-triggers.md#resource-trigger-firesdoes-not-fire-for-pr-validation-builds)
+- [Resource trigger with a stage filter fires for PR validation builds.](resource-triggers.md#resource-trigger-with-a-stage-filter-fires-for-pr-validation-builds)
+- [Resource trigger with a stage filter does not fire when the stage fails.](resource-triggers.md#resource-trigger-with-a-stage-filter-does-not-fire-when-the-stage-fails)
 
 ## Secret variables
 
